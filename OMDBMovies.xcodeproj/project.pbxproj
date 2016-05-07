@@ -14,6 +14,12 @@
 		BEA334221CDDE88A00F5755B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEA334201CDDE88A00F5755B /* LaunchScreen.storyboard */; };
 		BEA3342D1CDDE88A00F5755B /* OMDBMoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA3342C1CDDE88A00F5755B /* OMDBMoviesTests.swift */; };
 		BEA334381CDDE88A00F5755B /* OMDBMoviesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334371CDDE88A00F5755B /* OMDBMoviesUITests.swift */; };
+		BEA3344A1CDDEFE600F5755B /* APIServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334481CDDEFE600F5755B /* APIServiceManager.swift */; };
+		BEA3344B1CDDEFE600F5755B /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334491CDDEFE600F5755B /* Manager.swift */; };
+		BEA3344D1CDDF01600F5755B /* OMDBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA3344C1CDDF01600F5755B /* OMDBConstants.swift */; };
+		BEA3344F1CDDF54300F5755B /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA3344E1CDDF54300F5755B /* Enums.swift */; };
+		BEA334511CDDFFF000F5755B /* OMDBSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334501CDDFFEF00F5755B /* OMDBSearchService.swift */; };
+		BEA334531CDE09F900F5755B /* OMDBSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334521CDE09F900F5755B /* OMDBSearchResults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +53,12 @@
 		BEA334331CDDE88A00F5755B /* OMDBMoviesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OMDBMoviesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEA334371CDDE88A00F5755B /* OMDBMoviesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMDBMoviesUITests.swift; sourceTree = "<group>"; };
 		BEA334391CDDE88A00F5755B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEA334481CDDEFE600F5755B /* APIServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIServiceManager.swift; sourceTree = "<group>"; };
+		BEA334491CDDEFE600F5755B /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		BEA3344C1CDDF01600F5755B /* OMDBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OMDBConstants.swift; path = Network/OMDBConstants.swift; sourceTree = "<group>"; };
+		BEA3344E1CDDF54300F5755B /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enums.swift; path = Network/Enums.swift; sourceTree = "<group>"; };
+		BEA334501CDDFFEF00F5755B /* OMDBSearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDBSearchService.swift; sourceTree = "<group>"; };
+		BEA334521CDE09F900F5755B /* OMDBSearchResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDBSearchResults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +109,9 @@
 		BEA334161CDDE88A00F5755B /* OMDBMovies */ = {
 			isa = PBXGroup;
 			children = (
+				BEA3344E1CDDF54300F5755B /* Enums.swift */,
+				BEA3344C1CDDF01600F5755B /* OMDBConstants.swift */,
+				BEA334451CDDEFE600F5755B /* Network */,
 				BEA334171CDDE88A00F5755B /* AppDelegate.swift */,
 				BEA334191CDDE88A00F5755B /* ViewController.swift */,
 				BEA3341B1CDDE88A00F5755B /* Main.storyboard */,
@@ -123,6 +138,33 @@
 				BEA334391CDDE88A00F5755B /* Info.plist */,
 			);
 			path = OMDBMoviesUITests;
+			sourceTree = "<group>";
+		};
+		BEA334451CDDEFE600F5755B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BEA334461CDDEFE600F5755B /* DAO */,
+				BEA334471CDDEFE600F5755B /* Manager */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		BEA334461CDDEFE600F5755B /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				BEA334521CDE09F900F5755B /* OMDBSearchResults.swift */,
+			);
+			path = DAO;
+			sourceTree = "<group>";
+		};
+		BEA334471CDDEFE600F5755B /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				BEA334481CDDEFE600F5755B /* APIServiceManager.swift */,
+				BEA334491CDDEFE600F5755B /* Manager.swift */,
+				BEA334501CDDFFEF00F5755B /* OMDBSearchService.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +235,7 @@
 				TargetAttributes = {
 					BEA334131CDDE88A00F5755B = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = CWK29L7ZPT;
 					};
 					BEA334271CDDE88A00F5755B = {
 						CreatedOnToolsVersion = 7.3;
@@ -257,7 +300,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEA3341A1CDDE88A00F5755B /* ViewController.swift in Sources */,
+				BEA3344A1CDDEFE600F5755B /* APIServiceManager.swift in Sources */,
+				BEA334511CDDFFF000F5755B /* OMDBSearchService.swift in Sources */,
 				BEA334181CDDE88A00F5755B /* AppDelegate.swift in Sources */,
+				BEA334531CDE09F900F5755B /* OMDBSearchResults.swift in Sources */,
+				BEA3344B1CDDEFE600F5755B /* Manager.swift in Sources */,
+				BEA3344F1CDDF54300F5755B /* Enums.swift in Sources */,
+				BEA3344D1CDDF01600F5755B /* OMDBConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,10 +450,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = OMDBMovies/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = test.OMDBMovies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -412,10 +464,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = OMDBMovies/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = test.OMDBMovies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
