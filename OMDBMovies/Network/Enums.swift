@@ -87,7 +87,7 @@ enum serverResponseKeys {
     case imdbRating
     case imdbVotes
     case imdbID
-    case Type
+    case FilmType
     case Response
     case Error
     
@@ -112,7 +112,7 @@ enum serverResponseKeys {
         case .imdbRating: return "imdbRating"
         case .imdbVotes: return "imdbVotes"
         case .imdbID: return "imdbID"
-        case .Type: return "Type"
+        case .FilmType: return "Type"
         case .Response: return "Response"
         case .Error: return "Error"
         }

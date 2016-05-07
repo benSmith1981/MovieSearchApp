@@ -8,8 +8,11 @@
 
 import Foundation
 
+typealias errorMessage = String?
+typealias errorCode = String?
+
 typealias APIServiceResponse = (Bool, BodyDataDictionary?, NSError?) -> Void
-typealias APIUserResponse = (Bool, String?, String?) -> Void
+typealias APIUserResponse = (Bool, errorMessage, errorCode, SearchResults?) -> Void
 
 
 struct requestResult {
@@ -96,6 +99,8 @@ extension Manager {
                                 ]
                                 let omdbError = NSError(domain: requestResult.serverCode ?? requestResult.errorCode ?? "None", code: 600, userInfo: userInfo)
                                 onCompletion(requestResult.success, jsonData as? BodyDataDictionary, omdbError)
+                            } else {
+                                onCompletion(requestResult.success, jsonData as? BodyDataDictionary, nil)
                             }
                         } catch let error as NSError{
                             onCompletion(false, nil, error)

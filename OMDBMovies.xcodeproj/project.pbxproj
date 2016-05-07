@@ -19,7 +19,9 @@
 		BEA3344D1CDDF01600F5755B /* OMDBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA3344C1CDDF01600F5755B /* OMDBConstants.swift */; };
 		BEA3344F1CDDF54300F5755B /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA3344E1CDDF54300F5755B /* Enums.swift */; };
 		BEA334511CDDFFF000F5755B /* OMDBSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334501CDDFFEF00F5755B /* OMDBSearchService.swift */; };
-		BEA334531CDE09F900F5755B /* OMDBSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334521CDE09F900F5755B /* OMDBSearchResults.swift */; };
+		BEA334531CDE09F900F5755B /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334521CDE09F900F5755B /* SearchResults.swift */; };
+		BEA334551CDE69C000F5755B /* OMDBTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334541CDE69C000F5755B /* OMDBTableCell.swift */; };
+		BEA334571CDE73E100F5755B /* DetailMovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334561CDE73E100F5755B /* DetailMovieView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +60,9 @@
 		BEA3344C1CDDF01600F5755B /* OMDBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OMDBConstants.swift; path = Network/OMDBConstants.swift; sourceTree = "<group>"; };
 		BEA3344E1CDDF54300F5755B /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enums.swift; path = Network/Enums.swift; sourceTree = "<group>"; };
 		BEA334501CDDFFEF00F5755B /* OMDBSearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDBSearchService.swift; sourceTree = "<group>"; };
-		BEA334521CDE09F900F5755B /* OMDBSearchResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDBSearchResults.swift; sourceTree = "<group>"; };
+		BEA334521CDE09F900F5755B /* SearchResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
+		BEA334541CDE69C000F5755B /* OMDBTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDBTableCell.swift; sourceTree = "<group>"; };
+		BEA334561CDE73E100F5755B /* DetailMovieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMovieView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +118,9 @@
 				BEA334451CDDEFE600F5755B /* Network */,
 				BEA334171CDDE88A00F5755B /* AppDelegate.swift */,
 				BEA334191CDDE88A00F5755B /* ViewController.swift */,
+				BEA334541CDE69C000F5755B /* OMDBTableCell.swift */,
 				BEA3341B1CDDE88A00F5755B /* Main.storyboard */,
+				BEA334561CDE73E100F5755B /* DetailMovieView.swift */,
 				BEA3341E1CDDE88A00F5755B /* Assets.xcassets */,
 				BEA334201CDDE88A00F5755B /* LaunchScreen.storyboard */,
 				BEA334231CDDE88A00F5755B /* Info.plist */,
@@ -152,7 +158,7 @@
 		BEA334461CDDEFE600F5755B /* DAO */ = {
 			isa = PBXGroup;
 			children = (
-				BEA334521CDE09F900F5755B /* OMDBSearchResults.swift */,
+				BEA334521CDE09F900F5755B /* SearchResults.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
@@ -299,13 +305,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEA334571CDE73E100F5755B /* DetailMovieView.swift in Sources */,
 				BEA3341A1CDDE88A00F5755B /* ViewController.swift in Sources */,
 				BEA3344A1CDDEFE600F5755B /* APIServiceManager.swift in Sources */,
 				BEA334511CDDFFF000F5755B /* OMDBSearchService.swift in Sources */,
 				BEA334181CDDE88A00F5755B /* AppDelegate.swift in Sources */,
-				BEA334531CDE09F900F5755B /* OMDBSearchResults.swift in Sources */,
+				BEA334531CDE09F900F5755B /* SearchResults.swift in Sources */,
 				BEA3344B1CDDEFE600F5755B /* Manager.swift in Sources */,
 				BEA3344F1CDDF54300F5755B /* Enums.swift in Sources */,
+				BEA334551CDE69C000F5755B /* OMDBTableCell.swift in Sources */,
 				BEA3344D1CDDF01600F5755B /* OMDBConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
