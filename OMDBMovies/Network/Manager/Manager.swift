@@ -18,11 +18,11 @@ typealias APIUserResponse = (Bool, errorMessage, errorCode, SearchResults?) -> V
 struct requestResult {
     var success: Bool
     var errorMessage: String?
-    var errorCode: String?
+    var errorCode: Int?
     var serverMessage: String?
     var serverCode: String?
     
-    init(success: Bool, errorMessage: String?, errorCode: String?, serverMessage: String?, serverCode: String?)
+    init(success: Bool, errorMessage: String?, errorCode: Int?, serverMessage: String?, serverCode: String?)
     {
         self.success = success
         self.errorMessage = errorMessage
@@ -84,8 +84,10 @@ extension Manager {
             let session = NSURLSession.sharedSession()
             let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) in
                 if error != nil{
-                    onCompletion(false, nil, error)
-                    return
+                    dispatch_async(dispatch_get_main_queue()) {
+                        onCompletion(false, nil, error)
+                        return
+                    }
                 }
                 if response != nil{
                     if data != nil{
@@ -97,14 +99,21 @@ extension Manager {
                                 let userInfo = [
                                     NSLocalizedDescriptionKey: requestResult.serverMessage ?? requestResult.errorMessage ??  "Unknown Error"
                                 ]
-                                let omdbError = NSError(domain: requestResult.serverCode ?? requestResult.errorCode ?? "None", code: 600, userInfo: userInfo)
-                                onCompletion(requestResult.success, jsonData as? BodyDataDictionary, omdbError)
+                            
+                                let omdbError = NSError(domain: requestResult.serverCode ?? "None", code: requestResult.errorCode ?? 600, userInfo: userInfo)
+                                dispatch_async(dispatch_get_main_queue()) {
+                                    onCompletion(requestResult.success, jsonData as? BodyDataDictionary, omdbError)
+                                }
                             } else {
-                                onCompletion(requestResult.success, jsonData as? BodyDataDictionary, nil)
+                                dispatch_async(dispatch_get_main_queue()) {
+                                    onCompletion(requestResult.success, jsonData as? BodyDataDictionary, nil)
+                                }
                             }
                         } catch let error as NSError{
-                            onCompletion(false, nil, error)
-                            return
+                            dispatch_async(dispatch_get_main_queue()) {
+                                onCompletion(false, nil, error)
+                                return
+                            }
                         }
                         
                     }
@@ -112,7 +121,9 @@ extension Manager {
             })
             task.resume()
         } catch let error as NSError{
-            onCompletion(false, nil, error)
+            dispatch_async(dispatch_get_main_queue()) {
+                onCompletion(false, nil, error)
+            }
             
         }
     }

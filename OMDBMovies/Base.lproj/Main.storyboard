@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Root View Controller-->
@@ -58,7 +59,7 @@
         <!--Detail Movie View-->
         <scene sceneID="g6Z-rn-4rv">
             <objects>
-                <viewController id="bhD-Hh-xAC" customClass="DetailMovieView" customModule="OMDBMovies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="bhD-Hh-xAC" customClass="DetailMovieView" customModule="OMDBMovies" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="awX-ia-lb1"/>
                         <viewControllerLayoutGuide type="bottom" id="aUD-vG-b3I"/>
@@ -67,14 +68,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Eq-G0-kJN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Eq-G0-kJN">
                                 <rect key="frame" x="279" y="109" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sX7-Pt-28w">
-                                <rect key="frame" x="104" y="157" width="406" height="233"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sX7-Pt-28w">
+                                <rect key="frame" x="0.0" y="159" width="600" height="231"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -82,8 +83,20 @@
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aUD-vG-b3I" firstAttribute="top" secondItem="sX7-Pt-28w" secondAttribute="bottom" constant="210" id="Dv7-gX-bS1"/>
+                            <constraint firstItem="sX7-Pt-28w" firstAttribute="leading" secondItem="Jrm-cs-fce" secondAttribute="leadingMargin" constant="-20" id="EED-ml-ZCi"/>
+                            <constraint firstItem="sX7-Pt-28w" firstAttribute="top" secondItem="3Eq-G0-kJN" secondAttribute="bottom" constant="29" id="KPz-mO-o7d"/>
+                            <constraint firstItem="3Eq-G0-kJN" firstAttribute="leading" secondItem="Jrm-cs-fce" secondAttribute="leadingMargin" constant="259" id="bBg-Tc-CwD"/>
+                            <constraint firstItem="3Eq-G0-kJN" firstAttribute="top" secondItem="awX-ia-lb1" secondAttribute="bottom" constant="45" id="kMW-iF-8cc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sX7-Pt-28w" secondAttribute="trailing" constant="-20" id="pgC-W3-yen"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jg7-eA-6Gn"/>
+                    <connections>
+                        <outlet property="movieTitle" destination="3Eq-G0-kJN" id="PjR-Sx-r7G"/>
+                        <outlet property="synopsis" destination="sX7-Pt-28w" id="qyM-No-wwx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4yr-6I-7j7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

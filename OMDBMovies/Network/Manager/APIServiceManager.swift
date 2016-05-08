@@ -45,20 +45,20 @@ class APIServiceManager {
     func setServerCodeMessage(json:BodyDataDictionary?, error: NSError?) -> requestResult{
         //check if json is empty
         if let jsonUnwrapped = json,
-            let message = jsonUnwrapped[serverResponseKeys.Response.description] as? String{
-                if let serverCode = jsonUnwrapped[serverResponseKeys.Error.description] as? String{
+            let message = jsonUnwrapped[serverResponseKeys.Error.description] as? String{
+                if let serverCode = jsonUnwrapped[serverResponseKeys.Response.description] as? String{
                     return requestResult.init(success: false, errorMessage: nil, errorCode: nil, serverMessage: message, serverCode: serverCode)
                 }
         } else if let error = error {
             if case responseCodes.connectionFail400.rawValue ... responseCodes.connectionFail499.rawValue = error.code {
-                return requestResult.init(success: false, errorMessage: responseMessages.networkConnectionProblem.rawValue, errorCode: String(error.code), serverMessage: nil, serverCode: nil)
+                return requestResult.init(success: false, errorMessage: responseMessages.networkConnectionProblem.rawValue, errorCode: error.code, serverMessage: nil, serverCode: nil)
             } else if case -1103 ... -998 = error.code {
-                return requestResult.init(success: false, errorMessage: responseMessages.networkConnectionProblem.rawValue, errorCode: String(error.code), serverMessage: nil, serverCode: nil)
+                return requestResult.init(success: false, errorMessage: responseMessages.networkConnectionProblem.rawValue, errorCode: error.code, serverMessage: nil, serverCode: nil)
             }
             else if case responseCodes.serverProblem500.rawValue ... responseCodes.serverProblem599.rawValue = error.code {
-                return requestResult.init(success: false, errorMessage: responseMessages.serverProblem.rawValue, errorCode: String(error.code), serverMessage: nil, serverCode: nil)
+                return requestResult.init(success: false, errorMessage: responseMessages.serverProblem.rawValue, errorCode: error.code, serverMessage: nil, serverCode: nil)
             } else {
-                return requestResult.init(success: false, errorMessage: error.description, errorCode: String(error.code), serverMessage: nil, serverCode: nil)
+                return requestResult.init(success: false, errorMessage: error.description, errorCode: error.code, serverMessage: nil, serverCode: nil)
             }
         }
         return requestResult.init(success: true, errorMessage: nil, errorCode: nil, serverMessage: nil, serverCode: nil)

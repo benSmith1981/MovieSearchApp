@@ -8,10 +8,13 @@
 
 import UIKit
 
-class OMDBTableViewController: UITableViewController {
+class OMDBTableViewController: UITableViewController, UISearchResultsUpdating {
+
+    let searchController = UISearchController(searchResultsController: nil)
+    var detailMovie: SearchResults?
 
     //MARK: Moview search results
-    var searchedMovie: SearchResults? {
+    var searchedMovies = [SearchResults]() {
         didSet {
             //everytime savedarticles is added to or deleted from table is refreshed
             dispatch_async(dispatch_get_main_queue()) {
@@ -22,19 +25,10 @@ class OMDBTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        OMDBSearchService.sharedInstance.searchOMDBDatabase("Jaws", year: "", plot: plotTypes.FULL, response: responseTypes.JSON) { (success, errorMessage, errorCode, results) in
-            if success {
-                if let results = results {
-                    self.searchedMovie = results
-                }
-            } else {
-                print(errorMessage!)
-            }
-        }
-        dispatch_async(dispatch_get_main_queue()) {
-            self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-            self.tableView.reloadData()
-        }
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -50,7 +44,30 @@ class OMDBTableViewController: UITableViewController {
             // initialize new view controller and cast it as your view controller
             let detailView = segue.destinationViewController as! DetailMovieView
             // your new view controller should have property that will store passed value
-            detailView.movieInfo = self.searchedMovie
+            detailView.movieInfo = self.detailMovie
+        }
+    }
+    
+    func doSearch(title: String, year: String?) {
+        MBProgressLoader.Show()
+        OMDBSearchService.sharedInstance.searchOMDBDatabase(title, year: year ?? "", plot: plotTypes.FULL, response: responseTypes.JSON) { (success, errorMessage, errorCode, movie) in
+            MBProgressLoader.Hide()
+            
+            if success {
+                if let movie = movie {
+                    self.searchedMovies.append(movie)
+                }
+            } else {
+                if let errorCode = errorCode,
+                    let errorMessage = errorMessage {
+                    self.displayAlertMessage(errorCode, alertDescription: errorMessage)
+                }
+                print(errorMessage!)
+            }
+        }
+        dispatch_async(dispatch_get_main_queue()) {
+            self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+            self.tableView.reloadData()
         }
     }
 }
@@ -62,14 +79,14 @@ extension OMDBTableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("OMDBTableViewCell") as! OMBDTableCell
         let row = indexPath.row
         
-        let title = self.searchedMovie?.Title
+        let title = self.searchedMovies[row].Title
         cell.title!.text = title
         
         return cell
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1;
+        return self.searchedMovies.count;
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -83,8 +100,17 @@ extension OMDBTableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
+        self.detailMovie = self.searchedMovies[indexPath.row]
         performSegueWithIdentifier("moviedetails", sender: self)
+    }
+}
+
+extension OMDBTableViewController {
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        //Filter content for search
+        if searchController.active && searchController.searchBar.text?.characters.count >= 2 {
+            doSearch(searchController.searchBar.text!, year: "")
+        }
     }
 }
 

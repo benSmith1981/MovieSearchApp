@@ -29,7 +29,7 @@ class OMDBSearchService {
                         onCompletion(success, nil, nil, omdbSearchResponse)
                     }
                 } else {
-                    
+                    onCompletion(false, error?.userInfo[NSLocalizedDescriptionKey] as? String, String(error!.code) ?? error!.domain, nil)
                     print(error?.userInfo[NSLocalizedDescriptionKey])
                 }
             })

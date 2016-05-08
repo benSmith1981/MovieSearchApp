@@ -1,0 +1,13 @@
+PODS:
+  - MBProgressHUD (0.9.1)
+  - R.swift (0.11.0)
+
+DEPENDENCIES:
+  - MBProgressHUD (~> 0.9)
+  - R.swift
+
+SPEC CHECKSUMS:
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  R.swift: dfd7addf1564914d92745816b76b0563d688f387
+
+COCOAPODS: 0.39.0
