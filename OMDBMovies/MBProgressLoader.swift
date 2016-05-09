@@ -8,12 +8,15 @@ import MBProgressHUD
 class MBProgressLoader:  NSObject {
     
     class func Show(message:String = "loading...",delegate:UIViewController){
-        var load : MBProgressHUD = MBProgressHUD()
-        load = MBProgressHUD.showHUDAddedTo(delegate.view, animated: true)
-        load.mode = MBProgressHUDMode.Indeterminate
-        load.labelText = message;
         
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        if UIApplication.sharedApplication().networkActivityIndicatorVisible {
+            var load : MBProgressHUD = MBProgressHUD()
+            load = MBProgressHUD.showHUDAddedTo(delegate.view, animated: true)
+            load.mode = MBProgressHUDMode.Indeterminate
+            load.labelText = message;
+            
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        }
         
     }
     

@@ -24,6 +24,7 @@
 		BEA334571CDE73E100F5755B /* DetailMovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334561CDE73E100F5755B /* DetailMovieView.swift */; };
 		BEA3345A1CDF9AE000F5755B /* UIViewcontrollerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334591CDF9AE000F5755B /* UIViewcontrollerExtensions.swift */; };
 		BEA3345D1CDFAD1E00F5755B /* MBProgressLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA3345C1CDFAD1E00F5755B /* MBProgressLoader.swift */; };
+		BEA3345F1CDFB66900F5755B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA3345E1CDFB66900F5755B /* StringExtensions.swift */; };
 		C652EE4112C517513A69D0D9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1850F1E5C73FD93A08F95924 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		BEA334591CDF9AE000F5755B /* UIViewcontrollerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewcontrollerExtensions.swift; sourceTree = "<group>"; };
 		BEA3345B1CDFACF500F5755B /* OMDBMovies-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OMDBMovies-Bridging-Header.h"; sourceTree = "<group>"; };
 		BEA3345C1CDFAD1E00F5755B /* MBProgressLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBProgressLoader.swift; sourceTree = "<group>"; };
+		BEA3345E1CDFB66900F5755B /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		BF1E272EACCB514ACA9145AE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,8 +144,8 @@
 				BEA334171CDDE88A00F5755B /* AppDelegate.swift */,
 				BEA334191CDDE88A00F5755B /* ViewController.swift */,
 				BEA334541CDE69C000F5755B /* OMDBTableCell.swift */,
-				BEA3341B1CDDE88A00F5755B /* Main.storyboard */,
 				BEA334561CDE73E100F5755B /* DetailMovieView.swift */,
+				BEA3341B1CDDE88A00F5755B /* Main.storyboard */,
 				BEA3341E1CDDE88A00F5755B /* Assets.xcassets */,
 				BEA334201CDDE88A00F5755B /* LaunchScreen.storyboard */,
 				BEA334231CDDE88A00F5755B /* Info.plist */,
@@ -199,6 +201,7 @@
 		BEA334581CDF9ACE00F5755B /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BEA3345E1CDFB66900F5755B /* StringExtensions.swift */,
 				BEA334591CDF9AE000F5755B /* UIViewcontrollerExtensions.swift */,
 			);
 			name = extensions;
@@ -407,6 +410,7 @@
 				BEA3344F1CDDF54300F5755B /* Enums.swift in Sources */,
 				BEA334551CDE69C000F5755B /* OMDBTableCell.swift in Sources */,
 				BEA3345A1CDF9AE000F5755B /* UIViewcontrollerExtensions.swift in Sources */,
+				BEA3345F1CDFB66900F5755B /* StringExtensions.swift in Sources */,
 				BEA3344D1CDDF01600F5755B /* OMDBConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

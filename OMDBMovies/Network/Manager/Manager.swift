@@ -1,9 +1,9 @@
 //
 //  Manager.swift
-//  Yona
+//  OMDBMovies
 //
-//  Created by Ben Smith on 11/04/16.
-//  Copyright © 2016 Yona. All rights reserved.
+//  Created by Ben Smith on 07/05/16.
+//  Copyright © 2016 Ben Smith. All rights reserved.
 //
 
 import Foundation
@@ -12,7 +12,7 @@ typealias errorMessage = String?
 typealias errorCode = String?
 
 typealias APIServiceResponse = (Bool, BodyDataDictionary?, NSError?) -> Void
-typealias APIUserResponse = (Bool, errorMessage, errorCode, SearchResults?) -> Void
+typealias APIUserResponse = (Bool, errorMessage, errorCode, SearchResults?, [SearchResults]?) -> Void
 
 
 struct requestResult {

@@ -1,9 +1,9 @@
 //
 //  Enums.swift
-//  Yona
+//  OMDBMovies
 //
-//  Created by Ben Smith on 20/04/16.
-//  Copyright © 2016 Yona. All rights reserved.
+//  Created by Ben Smith on 07/05/16.
+//  Copyright © 2016 Ben Smith. All rights reserved.
 //
 
 import Foundation
@@ -17,6 +17,23 @@ enum responseTypes {
         // Use Internationalization, as appropriate.
         case .JSON: return "JSON";
         case .XML: return "XML";
+        }
+    }
+}
+
+enum movieTypes {
+    case movies
+    case series
+    case episode
+    case all
+    
+    var description : String {
+        switch self {
+        // Use Internationalization, as appropriate.
+        case .movies: return "movies";
+        case .series: return "series";
+        case .episode: return "episode";
+        case .all: return "ALL";
         }
     }
 }

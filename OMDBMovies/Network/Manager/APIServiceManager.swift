@@ -1,9 +1,9 @@
- //
-//  APIServiceManager.swift
-//  Yona
 //
-//  Created by Ben Smith on 31/03/16.
-//  Copyright © 2016 Yona. All rights reserved.
+//  APIServiceManager.swift
+//  OMDBMovies
+//
+//  Created by Ben Smith on 07/05/16.
+//  Copyright © 2016 Ben Smith. All rights reserved.
 //
 
 import Foundation

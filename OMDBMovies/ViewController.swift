@@ -13,8 +13,17 @@ class OMDBTableViewController: UITableViewController, UISearchResultsUpdating {
     let searchController = UISearchController(searchResultsController: nil)
     var detailMovie: SearchResults?
 
+    var searchResultMovies = [SearchResults]() {
+        didSet {
+            //everytime savedarticles is added to or deleted from table is refreshed
+            dispatch_async(dispatch_get_main_queue()) {
+                self.tableView.reloadData()
+            }
+        }
+    }
+
     //MARK: Moview search results
-    var searchedMovies = [SearchResults]() {
+    var savedMovieSearches = [SearchResults]() {
         didSet {
             //everytime savedarticles is added to or deleted from table is refreshed
             dispatch_async(dispatch_get_main_queue()) {
@@ -29,6 +38,8 @@ class OMDBTableViewController: UITableViewController, UISearchResultsUpdating {
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.scopeButtonTitles = [movieTypes.all.description, movieTypes.episode.description, movieTypes.movies.description, movieTypes.series.description]
+        searchController.searchBar.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -48,20 +59,27 @@ class OMDBTableViewController: UITableViewController, UISearchResultsUpdating {
         }
     }
     
-    func doSearch(title: String, year: String?) {
-        MBProgressLoader.Show()
-        OMDBSearchService.sharedInstance.searchOMDBDatabase(title, year: year ?? "", plot: plotTypes.FULL, response: responseTypes.JSON) { (success, errorMessage, errorCode, movie) in
-            MBProgressLoader.Hide()
-            
+    func doSearch(title: String, year: String?, scope: String = "") {
+        dispatch_async(dispatch_get_main_queue()) {
+            MBProgressLoader.Show()
+        }
+        
+        OMDBSearchService.sharedInstance.searchOMDBDatabase(title, year: year ?? "", plot: plotTypes.FULL, movieType: scope,  response: responseTypes.JSON) { (success, errorMessage, errorCode, movie, movies) in
+            dispatch_async(dispatch_get_main_queue()) {
+                MBProgressLoader.Hide()
+            }
             if success {
                 if let movie = movie {
-                    self.searchedMovies.append(movie)
+                    self.searchResultMovies.append(movie)
                 }
             } else {
                 if let errorCode = errorCode,
                     let errorMessage = errorMessage {
-                    self.displayAlertMessage(errorCode, alertDescription: errorMessage)
-                }
+                        dispatch_async(dispatch_get_main_queue()) {
+                            MBProgressLoader.Hide()
+                            self.displayAlertMessage(errorCode, alertDescription: errorMessage)
+                        }
+                    }
                 print(errorMessage!)
             }
         }
@@ -79,14 +97,23 @@ extension OMDBTableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("OMDBTableViewCell") as! OMBDTableCell
         let row = indexPath.row
         
-        let title = self.searchedMovies[row].Title
+        let movie: SearchResults
+        if searchController.active && searchController.searchBar.text?.characters.count >= 2 {
+            movie = searchResultMovies[row] //list the search results
+        } else {
+            movie = savedMovieSearches[row] //list all the films tapped on
+        }
+        let title = movie.Title
         cell.title!.text = title
         
         return cell
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.searchedMovies.count;
+        if searchController.active && searchController.searchBar.text?.characters.count >= 2 {
+            return searchResultMovies.count
+        }
+        return self.savedMovieSearches.count;
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -98,9 +125,9 @@ extension OMDBTableViewController {
 extension OMDBTableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.detailMovie = self.searchedMovies[indexPath.row]
+        self.detailMovie = self.searchResultMovies[indexPath.row]
+        savedMovieSearches.append(self.detailMovie!)
         performSegueWithIdentifier("moviedetails", sender: self)
     }
 }
@@ -109,8 +136,20 @@ extension OMDBTableViewController {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         //Filter content for search
         if searchController.active && searchController.searchBar.text?.characters.count >= 2 {
-            doSearch(searchController.searchBar.text!, year: "")
+            let searchBar = searchController.searchBar
+            doSearch((searchController.searchBar.text?.removeWhitespaceAddPlus())!, year: "", scope: searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex])
         }
     }
 }
 
+extension OMDBTableViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+//        self.tableView.reloadData()
+    }
+    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        //Filter content for search
+        if searchController.active && searchController.searchBar.text?.characters.count >= 2 {
+            doSearch((searchController.searchBar.text?.removeWhitespaceAddPlus())!, year: "", scope: searchBar.scopeButtonTitles![selectedScope])
+        }
+    }
+}
