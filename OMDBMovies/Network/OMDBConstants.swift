@@ -10,7 +10,7 @@ import Foundation
 
 struct OMDBConstants {
     
-    static let totalPages = 10
+    static let pagesPerRequest = 10
     
     struct baseUrls {
         static let omdbPath = "http://www.omdbapi.com/?"

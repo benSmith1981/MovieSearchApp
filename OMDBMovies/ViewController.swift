@@ -77,6 +77,7 @@ class OMDBTableViewController: UITableViewController {//, UISearchResultsUpdatin
         OMDBSearchService.sharedInstance.searchOMDBDatabaseByTitle(searchString, page: page, movieType: movieTypeScope) { (success, errorMessage, errorCode, nil, movies, totalPages) in
             MBProgressLoader.Hide()
             
+            self.totalPages = totalPages!
             if success {
                 print(movies)
                 if let movies = movies {
@@ -128,7 +129,7 @@ extension OMDBTableViewController {
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == OMDBConstants.totalPages - 1 {
+        if indexPath.row == self.currentPage * OMDBConstants.pagesPerRequest - 1 && self.currentPage <= self.totalPages {
             self.currentPage += 1
             if let text = (searchController.searchBar.text) {
                 self.doSearch(text, year: "", page: self.currentPage, movieTypeScope: searchController.searchBar.scopeButtonTitles![self.selectedScope])
@@ -214,6 +215,7 @@ extension OMDBTableViewController: UISearchBarDelegate {
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
         if searchController.active && searchController.searchBar.text?.characters.count >= 2 {
+            self.searchResultMovies = []
             let searchBar = searchController.searchBar
             self.scheduledSearch2(searchController.searchBar, page: self.currentPage, scope: searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex])
         }
@@ -222,6 +224,8 @@ extension OMDBTableViewController: UISearchBarDelegate {
     func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         //Filter content for search
         self.selectedScope = selectedScope
+        self.currentPage = 1
+        self.searchResultMovies = []
         if searchController.active && searchController.searchBar.text?.characters.count >= 2 {
             self.doSearch((searchController.searchBar.text)!, year: "", page: self.currentPage, movieTypeScope: searchBar.scopeButtonTitles![selectedScope])
         }

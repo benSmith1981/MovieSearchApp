@@ -26,7 +26,7 @@ class OMDBSearchService {
                     let totalResults = jsonResponse![serverResponseKeys.totalResults.description] as? String{
                     
                     //Calculate total pages by looking at the remainder of the division
-                    self.totalPages = Int(totalResults)!%OMDBConstants.totalPages != 0 ? Int(totalResults)!/OMDBConstants.totalPages + 1 : Int(totalResults)!/OMDBConstants.totalPages
+                    self.totalPages = Int(totalResults)!%OMDBConstants.pagesPerRequest != 0 ? Int(totalResults)!/OMDBConstants.pagesPerRequest + 1 : Int(totalResults)!/OMDBConstants.pagesPerRequest
                     
                     var searchResultsArray = [SearchResults]()
                     for searchResult in jsonResponseArray{
@@ -79,9 +79,6 @@ class OMDBSearchService {
      - parameter onCompletion: APIMovieResponse the UI friendly response block with messages and codes and data
      */
     func searchOMDBDatabaseByTitle(searchString: String, page: Int, movieType: String, onCompletion: APIMovieResponse) {
-        //guard against maximum number of pages on server response
-        guard totalPages <= page else { return }
-        
         //example path http://www.omdbapi.com/?s=jaws&page=1
         let path: String
         //if we have selected all then don't include scope type
