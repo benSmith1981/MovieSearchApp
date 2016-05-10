@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OMDBTableViewController: UITableViewController, UISearchResultsUpdating {
+class OMDBTableViewController: UITableViewController {//, UISearchResultsUpdating {
 
     let searchController = UISearchController(searchResultsController: nil)
     var currentMovieSelected: SearchResults?
@@ -39,7 +39,7 @@ class OMDBTableViewController: UITableViewController, UISearchResultsUpdating {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchController.searchResultsUpdater = self
+//        searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
@@ -87,7 +87,7 @@ class OMDBTableViewController: UITableViewController, UISearchResultsUpdating {
                 if let errorCode = errorCode,
                 let errorMessage = errorMessage {
                         MBProgressLoader.Hide()
-                        self.displayAlertMessage(errorCode, alertDescription: errorMessage)
+                    self.displayAlertMessage(errorCode == responseCodes.omdbErrorCode.rawValue ? responseMessages.ombdError.rawValue : responseMessages.networkConnectionProblem.rawValue, alertDescription: errorMessage)
                     }
                 print(errorMessage!)
             }
@@ -115,10 +115,6 @@ extension OMDBTableViewController {
         cell.title!.text = title
         
         return cell
-    }
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 78
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -153,6 +149,7 @@ extension OMDBTableViewController {
     }
 }
 
+// MARK: - Search Scheduler
 extension OMDBTableViewController {
     
     func scheduledSearch(searchBar: UISearchBar, scope: String = "") {
@@ -182,14 +179,16 @@ extension OMDBTableViewController {
         }
     }
     
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        //Filter content for search
-        if searchController.active && searchController.searchBar.text?.characters.count >= 2 {
-            let searchBar = searchController.searchBar
-            self.scheduledSearch2(searchController.searchBar, scope: searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex])
-        }
-    }
+//    func updateSearchResultsForSearchController(searchController: UISearchController) {
+//        //Filter content for search
+//        if searchController.active && searchController.searchBar.text?.characters.count >= 2 {
+//            let searchBar = searchController.searchBar
+//            self.scheduledSearch2(searchController.searchBar, scope: searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex])
+//        }
+//    }
 }
+
+// MARK: - Search Delegate
 
 extension OMDBTableViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
@@ -202,7 +201,7 @@ extension OMDBTableViewController: UISearchBarDelegate {
             self.scheduledSearch2(searchController.searchBar, scope: searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex])
         }
     }
-    
+        
     func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         //Filter content for search
         if searchController.active && searchController.searchBar.text?.characters.count >= 2 {

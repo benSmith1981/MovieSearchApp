@@ -79,11 +79,16 @@ enum responseCodes: Int{
     case omdbErrorCode = 600
 }
 
+enum errorDomains: String {
+    case ombdErrorDomain = "OMDB.Domain"
+    case networkErrorDomain = "Network.Domain"
+    case successDomain = "Success"
+}
+
 enum responseMessages: String{
-    case timeoutRequest = "The request timed out, server problem"
-    case OK = "Everything is OK"
     case networkConnectionProblem = "Network connection problem"
     case serverProblem = "Server problem"
+    case ombdError = "Search problem"
 }
 
 enum serverResponseKeys {

@@ -36,13 +36,13 @@ class OMDBSearchService {
                 if let jsonResponseObject = jsonResponse {
                     let omdbSearchResponse = SearchResults.init(searchResults: jsonResponseObject, searchString: searchString)
                     dispatch_async(dispatch_get_main_queue()) {
-                        onCompletion(success, error?.userInfo[NSLocalizedDescriptionKey] as? String, self.APIService.determineErrorCode(error), omdbSearchResponse, nil, searchString)
+                        onCompletion(success, error?.userInfo[NSLocalizedDescriptionKey] as? String, error?.code, omdbSearchResponse, nil, searchString)
                     }
                     
                 }
             } else {
                 dispatch_async(dispatch_get_main_queue()) {
-                    onCompletion(false, error?.userInfo[NSLocalizedDescriptionKey] as? String, self.APIService.determineErrorCode(error), nil, nil, searchString)
+                    onCompletion(false, error?.userInfo[NSLocalizedDescriptionKey] as? String, error?.code, nil, nil, searchString)
                 }
             }
         })

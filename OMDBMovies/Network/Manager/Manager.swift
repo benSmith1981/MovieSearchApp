@@ -9,27 +9,10 @@
 import Foundation
 
 typealias errorMessage = String?
-typealias errorCode = String?
+typealias errorCode = Int?
 
 typealias APIServiceResponse = (Bool, BodyDataDictionary?, NSError?) -> Void
 typealias APIMovieResponse = (Bool, errorMessage, errorCode, SearchResults?, [SearchResults]?, String?) -> Void
-
-struct requestResult {
-    var success: Bool
-    var errorMessage: String?
-    var errorCode: Int?
-    var serverMessage: String?
-    var serverCode: String?
-    
-    init(success: Bool, errorMessage: String?, errorCode: Int?, serverMessage: String?, serverCode: String?)
-    {
-        self.success = success
-        self.errorMessage = errorMessage
-        self.errorCode = errorCode
-        self.serverMessage = serverMessage
-        self.serverCode = serverCode
-    }
-}
 
 class Manager: NSObject {
 
@@ -50,7 +33,10 @@ class Manager: NSObject {
      */
     func setupRequest(path: String, body: BodyDataDictionary?, httpHeader: [String:String], httpMethod: httpMethods) throws -> NSURLRequest {
         
-        let request = NSMutableURLRequest(URL: NSURL(string: path)!)
+        //remove illegal characters in url
+        let escapedAddress = path.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        let request = NSMutableURLRequest(URL: NSURL(string: escapedAddress!)!)
+
         request.allHTTPHeaderFields = httpHeader //["Content-Type": "application/json", "Yona-Password": password]
         
         if let body = body {
@@ -58,7 +44,7 @@ class Manager: NSObject {
         }
         
         request.HTTPMethod = httpMethod.description
-        request.timeoutInterval = 30
+        request.timeoutInterval = 2
         
         return request
     }
@@ -97,10 +83,11 @@ extension Manager {
                             if requestResult.success == false{
                                 //This passes back the errors we retrieve, looks in the different optionals which may or may not be nil
                                 let userInfo = [
-                                    NSLocalizedDescriptionKey: requestResult.serverMessage ?? requestResult.errorMessage ??  "Unknown Error"
+                                    NSLocalizedDescriptionKey: requestResult.errorMessage ??  "Unknown Error"
                                 ]
                             
-                                let omdbError = NSError(domain: requestResult.serverCode ?? "None", code: requestResult.errorCode ?? 600, userInfo: userInfo)
+                                //Create our own OMDB error, set the domain to the code to either the system error code or the ombderror code (600), also make sure the userInfo dictionary is set to the error message returned (either Ombd error, or if that doesn't exist the system error
+                                let omdbError = NSError(domain: requestResult.domain, code: requestResult.errorCode, userInfo: userInfo)
                                 dispatch_async(dispatch_get_main_queue()) {
                                     onCompletion(requestResult.success, jsonData as? BodyDataDictionary, omdbError)
                                 }

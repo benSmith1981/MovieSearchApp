@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9054CC801CE1660F00F575E2 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9054CC7F1CE1660F00F575E2 /* UIImageViewExtensions.swift */; };
+		9054CC821CE1F16400F575E2 /* RequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9054CC811CE1F16400F575E2 /* RequestResult.swift */; };
 		BEA334181CDDE88A00F5755B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334171CDDE88A00F5755B /* AppDelegate.swift */; };
 		BEA3341A1CDDE88A00F5755B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334191CDDE88A00F5755B /* ViewController.swift */; };
 		BEA3341D1CDDE88A00F5755B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEA3341B1CDDE88A00F5755B /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 		0E1D6BCC2CB01223C0BFE037 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		1850F1E5C73FD93A08F95924 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9054CC7F1CE1660F00F575E2 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
+		9054CC811CE1F16400F575E2 /* RequestResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestResult.swift; sourceTree = "<group>"; };
 		BEA334141CDDE88A00F5755B /* OMDBMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OMDBMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEA334171CDDE88A00F5755B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEA334191CDDE88A00F5755B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				BEA334481CDDEFE600F5755B /* APIServiceManager.swift */,
 				BEA334491CDDEFE600F5755B /* Manager.swift */,
 				BEA334501CDDFFEF00F5755B /* OMDBSearchService.swift */,
+				9054CC811CE1F16400F575E2 /* RequestResult.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9054CC821CE1F16400F575E2 /* RequestResult.swift in Sources */,
 				9054CC801CE1660F00F575E2 /* UIImageViewExtensions.swift in Sources */,
 				BEA334571CDE73E100F5755B /* DetailMovieView.swift in Sources */,
 				BEA3341A1CDDE88A00F5755B /* ViewController.swift in Sources */,

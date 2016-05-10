@@ -14,6 +14,7 @@ class DetailMovieView: UIViewController {
     @IBOutlet weak var synopsis: UITextView?
     @IBOutlet weak var poster: UIImageView?
     @IBOutlet weak var director: UILabel?
+    @IBOutlet weak var actors: UILabel?
     @IBOutlet weak var year: UILabel?
 
     var movieInfo: SearchResults?
@@ -26,6 +27,17 @@ class DetailMovieView: UIViewController {
             synopsis?.text = movieInfo.Plot
             poster?.image = UIImage(named: "placeholder")  //set placeholder image first.
             poster?.downloadImageFrom(link: movieInfo.Poster!, contentMode: UIViewContentMode.ScaleAspectFit)  //set your image from link array.
+            if let director = movieInfo.Director {
+                self.director?.text = "Director: " + director
+            }
+            
+            if let actors = movieInfo.Actors {
+                self.actors?.text = "Actors: " + actors
+            }
+            
+            if let year = movieInfo.Year {
+                self.year?.text = "Year: " + year
+            }
         }
     }
     

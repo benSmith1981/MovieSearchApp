@@ -27,6 +27,7 @@ class APIServiceManager {
      */
     func callRequestWithAPIServiceResponse(body: BodyDataDictionary?, path: String, httpMethod: httpMethods, onCompletion:APIServiceResponse){
         
+        //incase the server can return different languages send it the language
         let langId = NSLocale.currentLocale().objectForKey(NSLocaleLanguageCode) as! String
         let countryId = NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as! String
         let language = "\(langId)-\(countryId)"
@@ -39,37 +40,25 @@ class APIServiceManager {
      Setups up the messages from the server so the UI knows what is going wrong or right
      
      - parameter json:BodyDataDictionary?, the body of the messages from server, if there is an error then there is a message or code key in response
-     - parameter code: Int, the http response code we need to check (200-204 success, other is fail
-     - parameter none
+     - parameter error: NSError?, the http response code we need to check (200-204 success, other is fail
+     - return requestResult A struct used for error requests containing our codes and messages of the error
      */
     func setServerCodeMessage(json:BodyDataDictionary?, error: NSError?) -> requestResult{
-        //check if json is empty
+        //If there is a json response and we have the key Error then we know there is and
         if let jsonUnwrapped = json,
             let message = jsonUnwrapped[serverResponseKeys.Error.description] as? String{
-                if let serverCode = jsonUnwrapped[serverResponseKeys.Response.description] as? String{
-                    return requestResult.init(success: false, errorMessage: nil, errorCode: nil, serverMessage: message, serverCode: serverCode)
-                }
+                return requestResult.init(success: false, errorMessage: message, errorCode: responseCodes.omdbErrorCode.rawValue, domain: .ombdErrorDomain)
+                
         } else if let error = error {
-            if case responseCodes.connectionFail400.rawValue ... responseCodes.connectionFail499.rawValue = error.code {
-                return requestResult.init(success: false, errorMessage: responseMessages.networkConnectionProblem.rawValue, errorCode: error.code, serverMessage: nil, serverCode: nil)
-            } else if case -1103 ... -998 = error.code {
-                return requestResult.init(success: false, errorMessage: responseMessages.networkConnectionProblem.rawValue, errorCode: error.code, serverMessage: nil, serverCode: nil)
-            }
-            else if case responseCodes.serverProblem500.rawValue ... responseCodes.serverProblem599.rawValue = error.code {
-                return requestResult.init(success: false, errorMessage: responseMessages.serverProblem.rawValue, errorCode: error.code, serverMessage: nil, serverCode: nil)
+            //for any error between 500 to 599 return server problem, else return network error
+            if case responseCodes.serverProblem500.rawValue ... responseCodes.serverProblem599.rawValue = error.code {
+                return requestResult.init(success: false, errorMessage: responseMessages.serverProblem.rawValue, errorCode: error.code, domain: .networkErrorDomain)
             } else {
-                return requestResult.init(success: false, errorMessage: error.description, errorCode: error.code, serverMessage: nil, serverCode: nil)
+                //if there is possibly any other just return the systems error
+                return requestResult.init(success: false, errorMessage: responseMessages.networkConnectionProblem.rawValue, errorCode: error.code, domain: .networkErrorDomain)
             }
         }
-        return requestResult.init(success: true, errorMessage: nil, errorCode: nil, serverMessage: nil, serverCode: nil)
+        //success so return that with a success domain
+        return requestResult.init(success: true, errorMessage: nil, errorCode: responseCodes.ok200.rawValue, domain: .successDomain)
     }
-    
-    func determineErrorCode(error: NSError?) -> String {
-        if let error = error {
-            return error.code == responseCodes.omdbErrorCode.rawValue ? error.domain: String(error.code)
-        } else {
-            return "No Error"
-        }
-    }
-    
  }
