@@ -73,7 +73,7 @@
         <!--Detail Movie View-->
         <scene sceneID="g6Z-rn-4rv">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="bhD-Hh-xAC" customClass="DetailMovieView" customModule="OMDBMovies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="bhD-Hh-xAC" customClass="OMDBDetailMovieView" customModule="OMDBMovies" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="awX-ia-lb1"/>
                         <viewControllerLayoutGuide type="bottom" id="aUD-vG-b3I"/>

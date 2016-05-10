@@ -28,10 +28,10 @@ class OMDBSearchService {
                     //Calculate total pages by looking at the remainder of the division
                     self.totalPages = Int(totalResults)!%OMDBConstants.pagesPerRequest != 0 ? Int(totalResults)!/OMDBConstants.pagesPerRequest + 1 : Int(totalResults)!/OMDBConstants.pagesPerRequest
                     
-                    var searchResultsArray = [SearchResults]()
+                    var searchResultsArray = [Movie]()
                     for searchResult in jsonResponseArray{
                         if let searchResult = searchResult as? BodyDataDictionary {
-                            let omdbSearchResponse = SearchResults.init(searchResults: searchResult, searchString: searchString)
+                            let omdbSearchResponse = Movie.init(searchResults: searchResult, searchString: searchString)
                             searchResultsArray.append(omdbSearchResponse)
                         }
                     }
@@ -41,7 +41,7 @@ class OMDBSearchService {
                 }
                 
                 if let jsonResponseObject = jsonResponse {
-                    let omdbSearchResponse = SearchResults.init(searchResults: jsonResponseObject, searchString: searchString)
+                    let omdbSearchResponse = Movie.init(searchResults: jsonResponseObject, searchString: searchString)
                     //return the movie object
                     onCompletion(success, error?.userInfo[NSLocalizedDescriptionKey] as? String, error?.code, omdbSearchResponse, nil, self.totalPages ?? 0)
                     

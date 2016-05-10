@@ -17,7 +17,7 @@ typealias APIServiceResponse = (Bool, BodyDataDictionary?, NSError?) -> Void
 
 /** This is the response body passing back data to the UI, before we do this we have already got the result or the results of the search and give it back in a nice object, also if there are any errors then these have been unwrapped in a user friendly way, we also give back the total pages so we can load more results
  */
-typealias APIMovieResponse = (Bool, errorMessage, errorCode, SearchResults?, [SearchResults]?, Int?) -> Void
+typealias APIMovieResponse = (Bool, errorMessage, errorCode, Movie?, [Movie]?, Int?) -> Void
 
 class Manager: NSObject {
 

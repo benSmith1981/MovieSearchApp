@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SearchResults {
+struct Movie {
     var Title: String?
     var Year: String?
     var Rated: String?

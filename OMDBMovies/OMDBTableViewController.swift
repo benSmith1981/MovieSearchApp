@@ -16,9 +16,9 @@ class OMDBTableViewController: UITableViewController {//, UISearchResultsUpdatin
     var totalPages: Int = 0
     var selectedScope: Int = 0
     var currentPage: Int = 1
-    var currentMovieSelected: SearchResults?
+    var currentMovieSelected: Movie?
     var myQueue: dispatch_queue_t = dispatch_queue_create("com.queue.my", DISPATCH_QUEUE_CONCURRENT)
-    var searchResultMovies = [SearchResults]() {
+    var searchResultMovies = [Movie]() {
         didSet{
             //everytime savedarticles is added to or deleted from table is refreshed
             dispatch_async(dispatch_get_main_queue()) {
@@ -28,7 +28,7 @@ class OMDBTableViewController: UITableViewController {//, UISearchResultsUpdatin
     }
 
     //MARK: Moview search results
-    var savedMovieSearches = [SearchResults]() {
+    var savedMovieSearches = [Movie]() {
         didSet {
             //everytime savedarticles is added to or deleted from table is refreshed
             dispatch_async(dispatch_get_main_queue()) {
@@ -65,7 +65,7 @@ class OMDBTableViewController: UITableViewController {//, UISearchResultsUpdatin
         if (segue.identifier == "moviedetails") {
             MBProgressLoader.Hide()
             // initialize new view controller and cast it as your view controller
-            let detailView = segue.destinationViewController as! DetailMovieView
+            let detailView = segue.destinationViewController as! OMDBDetailMovieView
             detailView.movieInfo = self.currentMovieSelected
             
         }
@@ -105,7 +105,7 @@ extension OMDBTableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("OMDBTableViewCell") as! OMBDTableCell
         let row = indexPath.row
         
-        let movie: SearchResults
+        let movie: Movie
         movie = searchResultMovies[row] //list the search results
 
         cell.movieThumbnail!.image = UIImage(named: "placeholder")  //set placeholder image first.
@@ -146,7 +146,7 @@ extension OMDBTableViewController {
         self.currentMovieSelected = self.searchResultMovies[indexPath.row]
         MBProgressLoader.Show()
 
-        OMDBSearchService.sharedInstance.searchMovieDetailsDatabase(currentMovieSelected!.Title!.removeWhitespaceAddPlus(), year: currentMovieSelected!.Year!, plot: plotTypes.FULL, response: responseTypes.JSON, onCompletion: { (success, errorMessage, errorCode, movie, nil, searchText) in
+        OMDBSearchService.sharedInstance.searchMovieDetailsDatabase(currentMovieSelected!.Title!, year: currentMovieSelected!.Year!, plot: plotTypes.FULL, response: responseTypes.JSON, onCompletion: { (success, errorMessage, errorCode, movie, nil, searchText) in
             if success {
                 if let movie = movie {
                     // your new view controller should have property that will store passed value
@@ -185,6 +185,7 @@ extension OMDBTableViewController {
     
     func scheduledSearch2(searchBar: UISearchBar, page: Int, scope: String = "") {
         let popTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(SEARCH_DELAY_IN_MS * NSEC_PER_MSEC))
+        //the value of text is retained in the thread we spawn off main queue
         let text = searchBar.text ?? ""
         dispatch_after(popTime, dispatch_get_main_queue()) {
             if text == searchBar.text {

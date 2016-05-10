@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-class DetailMovieView: UIViewController {
+class OMDBDetailMovieView: UIViewController {
     
     @IBOutlet weak var movieTitle: UILabel?
     @IBOutlet weak var synopsis: UITextView?
@@ -18,7 +18,7 @@ class DetailMovieView: UIViewController {
     @IBOutlet weak var year: UILabel?
     @IBOutlet weak var rottenTomatoeRating: UILabel?
 
-    var movieInfo: SearchResults?
+    var movieInfo: Movie?
 
     override func viewDidLoad() {
         super.viewDidLoad()
