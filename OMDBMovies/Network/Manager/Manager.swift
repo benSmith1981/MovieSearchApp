@@ -12,8 +12,7 @@ typealias errorMessage = String?
 typealias errorCode = String?
 
 typealias APIServiceResponse = (Bool, BodyDataDictionary?, NSError?) -> Void
-typealias APIUserResponse = (Bool, errorMessage, errorCode, SearchResults?, [SearchResults]?) -> Void
-
+typealias APIMovieResponse = (Bool, errorMessage, errorCode, SearchResults?, [SearchResults]?, String?) -> Void
 
 struct requestResult {
     var success: Bool
@@ -89,8 +88,8 @@ extension Manager {
                         return
                     }
                 }
-                if response != nil{
-                    if data != nil{
+                if response != nil {
+                    if data != nil {
                         do{
                             let jsonData = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
                             let requestResult = APIServiceManager.sharedInstance.setServerCodeMessage(jsonData  as? BodyDataDictionary, error: error)

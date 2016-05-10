@@ -10,7 +10,7 @@ import Foundation
 
 import UIKit
 class OMBDTableCell: UITableViewCell {
-    @IBOutlet weak var movieThumbnael: UIImageView?
+    @IBOutlet weak var movieThumbnail: UIImageView?
     @IBOutlet weak var title: UILabel?
     
     

@@ -76,6 +76,7 @@ enum responseCodes: Int{
     case connectionFail499 = 499
     case serverProblem500 = 500
     case serverProblem599 = 599
+    case omdbErrorCode = 600
 }
 
 enum responseMessages: String{
@@ -99,7 +100,7 @@ enum serverResponseKeys {
     case Language
     case Country
     case Awards
-    case Posters
+    case Poster
     case Metascore
     case imdbRating
     case imdbVotes
@@ -124,7 +125,7 @@ enum serverResponseKeys {
         case .Language: return "Language"
         case .Country: return "Country"
         case .Awards: return "Awards"
-        case .Posters: return "Posters"
+        case .Poster: return "Poster"
         case .Metascore: return "Metascore"
         case .imdbRating: return "imdbRating"
         case .imdbVotes: return "imdbVotes"

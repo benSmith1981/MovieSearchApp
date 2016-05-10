@@ -22,7 +22,7 @@ struct SearchResults {
     var Language: String?
     var Country: String?
     var Awards: String?
-    var Posters: String?
+    var Poster: String?
     var Metascore: String?
     var imdbRating: String?
     var imdbVotes: String?
@@ -30,9 +30,12 @@ struct SearchResults {
     var FilmType: String?
     var Response: String?
     var Error: String?
+    var SearchString: String?
 
-    init(searchResults: BodyDataDictionary){
+    init(searchResults: BodyDataDictionary, searchString:String){
         
+        self.SearchString = searchString
+
         if let Error = searchResults[serverResponseKeys.Error.description] as? String,
             let Response = searchResults[serverResponseKeys.Response.description] as? String{
             self.Response = Response
@@ -96,8 +99,8 @@ struct SearchResults {
                 self.Awards = Awards
             }
             
-            if let Posters = searchResults[serverResponseKeys.Posters.description] as? String{
-                self.Posters = Posters
+            if let Poster = searchResults[serverResponseKeys.Poster.description] as? String{
+                self.Poster = Poster
             }
             
             if let Metascore = searchResults[serverResponseKeys.Metascore.description] as? String{

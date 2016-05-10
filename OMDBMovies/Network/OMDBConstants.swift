@@ -17,10 +17,11 @@ struct OMDBConstants {
 
     struct parameters {
         static let title = "t"
+        static let searchTitle = "s"
         static let year = "y"
         static let plot = "plot"
         static let responseDataType = "r"
-        static let equals = "="
-        static let and = "&"
+        static let page = "page"
+        static let movieType = "type"
     }
 }

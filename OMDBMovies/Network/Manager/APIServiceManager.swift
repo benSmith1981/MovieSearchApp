@@ -63,4 +63,13 @@ class APIServiceManager {
         }
         return requestResult.init(success: true, errorMessage: nil, errorCode: nil, serverMessage: nil, serverCode: nil)
     }
+    
+    func determineErrorCode(error: NSError?) -> String {
+        if let error = error {
+            return error.code == responseCodes.omdbErrorCode.rawValue ? error.domain: String(error.code)
+        } else {
+            return "No Error"
+        }
+    }
+    
  }
