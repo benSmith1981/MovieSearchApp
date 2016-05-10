@@ -43,7 +43,7 @@ class OMDBTableViewController: UITableViewController {//, UISearchResultsUpdatin
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
-        searchController.searchBar.scopeButtonTitles = [movieTypes.all.description, movieTypes.episode.description, movieTypes.movies.description, movieTypes.series.description]
+        searchController.searchBar.scopeButtonTitles = [movieTypes.all.description, movieTypes.episode.description, movieTypes.movie.description, movieTypes.series.description]
         searchController.searchBar.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -55,13 +55,13 @@ class OMDBTableViewController: UITableViewController {//, UISearchResultsUpdatin
 
     //MARK: Navigation, Segue
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        MBProgressLoader.Show()
         return false
     }
     
     //MARK: Navigation, Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
-        
+        MBProgressLoader.Hide()
+
         if (segue.identifier == "moviedetails") {
             MBProgressLoader.Hide()
             // initialize new view controller and cast it as your view controller
@@ -84,11 +84,10 @@ class OMDBTableViewController: UITableViewController {//, UISearchResultsUpdatin
                     
                 }
             } else {
-                if let errorCode = errorCode,
-                let errorMessage = errorMessage {
-                        MBProgressLoader.Hide()
-                    self.displayAlertMessage(errorCode == responseCodes.omdbErrorCode.rawValue ? responseMessages.ombdError.rawValue : responseMessages.networkConnectionProblem.rawValue, alertDescription: errorMessage)
-                    }
+          
+                MBProgressLoader.Hide()
+                self.displayAlertMessage(errorCode == responseCodes.omdbErrorCode.rawValue ? responseMessages.ombdError.rawValue : responseMessages.networkConnectionProblem.rawValue, alertDescription: errorMessage ?? "")
+                
                 print(errorMessage!)
             }
         }
@@ -135,8 +134,9 @@ extension OMDBTableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         self.currentMovieSelected = self.searchResultMovies[indexPath.row]
-        
-        OMDBSearchService.sharedInstance.searchMovieDetailsDatabase(currentMovieSelected!.Title!.removeWhitespaceAddPlus(), year: currentMovieSelected!.Year!, plot: plotTypes.FULL, response: responseTypes.JSON, onCompletion: { (success, message, errorcode, movie, nil, searchText) in
+        MBProgressLoader.Show()
+
+        OMDBSearchService.sharedInstance.searchMovieDetailsDatabase(currentMovieSelected!.Title!.removeWhitespaceAddPlus(), year: currentMovieSelected!.Year!, plot: plotTypes.FULL, response: responseTypes.JSON, onCompletion: { (success, errorMessage, errorCode, movie, nil, searchText) in
             if success {
                 if let movie = movie {
                     // your new view controller should have property that will store passed value
@@ -144,6 +144,10 @@ extension OMDBTableViewController {
                     self.savedMovieSearches.append(movie)
                     self.performSegueWithIdentifier("moviedetails", sender: self)
                 }
+            } else {
+                MBProgressLoader.Hide()
+                self.displayAlertMessage(errorCode == responseCodes.omdbErrorCode.rawValue ? responseMessages.ombdError.rawValue : responseMessages.networkConnectionProblem.rawValue, alertDescription: errorMessage ?? "")
+                
             }
         })
     }
@@ -174,7 +178,7 @@ extension OMDBTableViewController {
         let text = searchBar.text ?? ""
         dispatch_after(popTime, dispatch_get_main_queue()) {
             if text == searchBar.text {
-                self.doSearch(text.removeWhitespaceAddPlus(), year: "", movieTypeScope: scope)
+                self.doSearch(text, year: "", movieTypeScope: scope)
             }
         }
     }
@@ -205,7 +209,7 @@ extension OMDBTableViewController: UISearchBarDelegate {
     func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         //Filter content for search
         if searchController.active && searchController.searchBar.text?.characters.count >= 2 {
-            self.doSearch((searchController.searchBar.text?.removeWhitespaceAddPlus())!, year: "", movieTypeScope: searchBar.scopeButtonTitles![selectedScope])
+            self.doSearch((searchController.searchBar.text)!, year: "", movieTypeScope: searchBar.scopeButtonTitles![selectedScope])
         }
     }
 }

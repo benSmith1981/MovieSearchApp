@@ -22,7 +22,7 @@ enum responseTypes {
 }
 
 enum movieTypes {
-    case movies
+    case movie
     case series
     case episode
     case all
@@ -30,7 +30,7 @@ enum movieTypes {
     var description : String {
         switch self {
         // Use Internationalization, as appropriate.
-        case .movies: return "movies";
+        case .movie: return "movie";
         case .series: return "series";
         case .episode: return "episode";
         case .all: return "ALL";
@@ -89,6 +89,7 @@ enum responseMessages: String{
     case networkConnectionProblem = "Network connection problem"
     case serverProblem = "Server problem"
     case ombdError = "Search problem"
+    case success = "Success"
 }
 
 enum serverResponseKeys {

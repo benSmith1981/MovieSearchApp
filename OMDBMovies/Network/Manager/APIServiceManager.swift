@@ -9,6 +9,9 @@
 import Foundation
 import SystemConfiguration
 
+/**
+ The basic structure of a JSON response or a body required in a request
+ */
 public typealias BodyDataDictionary = [String: AnyObject]
 
 class APIServiceManager {
@@ -59,6 +62,6 @@ class APIServiceManager {
             }
         }
         //success so return that with a success domain
-        return requestResult.init(success: true, errorMessage: nil, errorCode: responseCodes.ok200.rawValue, domain: .successDomain)
+        return requestResult.init(success: true, errorMessage: responseMessages.success.rawValue, errorCode: responseCodes.ok200.rawValue, domain: .successDomain)
     }
  }
