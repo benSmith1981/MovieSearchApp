@@ -49,7 +49,7 @@ class Manager: NSObject {
         }
         
         request.HTTPMethod = httpMethod.description
-        request.timeoutInterval = 10
+        request.timeoutInterval = OMDBConstants.timeout
         
         return request
     }

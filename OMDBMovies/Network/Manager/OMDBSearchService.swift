@@ -65,7 +65,7 @@ class OMDBSearchService {
      */
     func searchMovieDetailsDatabase(searchString: String, year: String, plot: plotTypes, response: responseTypes, onCompletion: APIMovieResponse) {
         //example path http://www.omdbapi.com/?t=12&y=&plot=short&r=json
-        let path = OMDBConstants.baseUrls.omdbPath + OMDBConstants.parameters.title + "=" + searchString + "&" + OMDBConstants.parameters.year + "=" + year + "&" + OMDBConstants.parameters.plot + "=" + plot.description +  "&" + OMDBConstants.parameters.responseDataType + "=" + response.description
+        let path = OMDBConstants.baseUrls.omdbPath + OMDBConstants.parameters.title + "=" + searchString + "&" + OMDBConstants.parameters.year + "=" + year + "&" + OMDBConstants.parameters.plot + "=" + plot.description +  "&" + OMDBConstants.parameters.responseDataType + "=" + response.description + "&" + OMDBConstants.parameters.tomatoes + "=true"
         
         searchMovieGeneric(path, searchString: searchString, onCompletion: onCompletion)
     }

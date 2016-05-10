@@ -116,6 +116,7 @@ enum serverResponseKeys {
     case Error
     case totalResults
     case Search
+    case tomatoUserRating
     
     var description : String {
         switch self {
@@ -143,6 +144,7 @@ enum serverResponseKeys {
         case .Error: return "Error"
         case .totalResults: return "totalResults"
         case .Search: return "Search"
+        case .tomatoUserRating: return "tomatoUserRating"
 
         }
     }

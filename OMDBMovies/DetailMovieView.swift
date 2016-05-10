@@ -16,6 +16,7 @@ class DetailMovieView: UIViewController {
     @IBOutlet weak var director: UILabel?
     @IBOutlet weak var actors: UILabel?
     @IBOutlet weak var year: UILabel?
+    @IBOutlet weak var rottenTomatoeRating: UILabel?
 
     var movieInfo: SearchResults?
 
@@ -38,6 +39,10 @@ class DetailMovieView: UIViewController {
             
             if let year = movieInfo.Year {
                 self.year?.text = "Year: " + year
+            }
+            
+            if let rottenTomatoeRating = movieInfo.tomatoeRating {
+                self.rottenTomatoeRating?.text = "Rotten Tomatoe Rating: " + rottenTomatoeRating
             }
         }
     }

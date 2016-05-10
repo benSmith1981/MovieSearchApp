@@ -31,6 +31,7 @@ struct SearchResults {
     var Response: String?
     var Error: String?
     var SearchString: String?
+    var tomatoeRating: String?
 
     init(searchResults: BodyDataDictionary, searchString:String){
         
@@ -45,6 +46,10 @@ struct SearchResults {
             
             for (key,value) in searchResults {
                 print("\(key) = \(value)")
+            }
+            
+            if let tomatoeRating = searchResults[serverResponseKeys.tomatoUserRating.description] as? String{
+                self.tomatoeRating = tomatoeRating
             }
         
             if let title = searchResults[serverResponseKeys.Title.description] as? String{
