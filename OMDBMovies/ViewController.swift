@@ -11,13 +11,13 @@ import UIKit
 class OMDBTableViewController: UITableViewController {//, UISearchResultsUpdating {
 
     let searchController = UISearchController(searchResultsController: nil)
-    var currentMovieSelected: SearchResults?
-    private var preparingForSegue = false
-    var myQueue: dispatch_queue_t = dispatch_queue_create("com.queue.my", DISPATCH_QUEUE_CONCURRENT)
-    var scheduledSearchNow = false
     let SEARCH_DELAY_IN_MS: UInt64 = 500
-    var searchedStrings = [String]()
 
+    var totalPages: Int = 0
+    var selectedScope: Int = 0
+    var currentPage: Int = 1
+    var currentMovieSelected: SearchResults?
+    var myQueue: dispatch_queue_t = dispatch_queue_create("com.queue.my", DISPATCH_QUEUE_CONCURRENT)
     var searchResultMovies = [SearchResults]() {
         didSet{
             //everytime savedarticles is added to or deleted from table is refreshed
@@ -71,16 +71,16 @@ class OMDBTableViewController: UITableViewController {//, UISearchResultsUpdatin
         }
     }
     
-    func doSearch(searchString: String, year: String?, movieTypeScope: String = "") {
+    func doSearch(searchString: String, year: String?, page: Int, movieTypeScope: String = "") {
         MBProgressLoader.Show()
         
-        OMDBSearchService.sharedInstance.searchOMDBDatabaseByTitle(searchString, page: 1, movieType: movieTypeScope) { (success, errorMessage, errorCode, nil, movies, searchText) in
+        OMDBSearchService.sharedInstance.searchOMDBDatabaseByTitle(searchString, page: page, movieType: movieTypeScope) { (success, errorMessage, errorCode, nil, movies, totalPages) in
             MBProgressLoader.Hide()
             
             if success {
                 print(movies)
                 if let movies = movies {
-                    self.searchResultMovies = movies
+                    self.searchResultMovies += movies
                     
                 }
             } else {
@@ -117,14 +117,23 @@ extension OMDBTableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.active && searchController.searchBar.text?.characters.count >= 2 {
+        //if searchController.active && searchController.searchBar.text?.characters.count >= 2 {
             return searchResultMovies.count
-        }
-        return self.savedMovieSearches.count;
+        //}
+        //return self.savedMovieSearches.count;
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == OMDBConstants.totalPages - 1 {
+            self.currentPage += 1
+            if let text = (searchController.searchBar.text) {
+                self.doSearch(text, year: "", page: self.currentPage, movieTypeScope: searchController.searchBar.scopeButtonTitles![self.selectedScope])
+            }
+        }
     }
 }
 
@@ -141,7 +150,7 @@ extension OMDBTableViewController {
                 if let movie = movie {
                     // your new view controller should have property that will store passed value
                     self.currentMovieSelected = movie
-                    self.savedMovieSearches.append(movie)
+//                    self.savedMovieSearches.append(movie)
                     self.performSegueWithIdentifier("moviedetails", sender: self)
                 }
             } else {
@@ -156,29 +165,29 @@ extension OMDBTableViewController {
 // MARK: - Search Scheduler
 extension OMDBTableViewController {
     
-    func scheduledSearch(searchBar: UISearchBar, scope: String = "") {
-        if scheduledSearchNow {
-            return
-        }
-        self.scheduledSearchNow = true
-        let popTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(1000 * NSEC_PER_MSEC))
-        dispatch_after(popTime, myQueue, {() -> Void in
-            self.scheduledSearchNow = false
-            let text = searchBar.text?.removeWhitespaceAddPlus()
-            self.doSearch(text!, year: "", movieTypeScope: scope)
-            dispatch_async(dispatch_get_main_queue(), {() -> Void in
-                self.tableView.reloadData()
-            })
-        })
-    }
+//    func scheduledSearch(searchBar: UISearchBar, scope: String = "") {
+//        if scheduledSearchNow {
+//            return
+//        }
+//        self.scheduledSearchNow = true
+//        let popTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(1000 * NSEC_PER_MSEC))
+//        dispatch_after(popTime, myQueue, {() -> Void in
+//            self.scheduledSearchNow = false
+//            let text = searchBar.text?.removeWhitespaceAddPlus()
+//            self.doSearch(text!, year: "", movieTypeScope: scope)
+//            dispatch_async(dispatch_get_main_queue(), {() -> Void in
+//                self.tableView.reloadData()
+//            })
+//        })
+//    }
     
     
-    func scheduledSearch2(searchBar: UISearchBar, scope: String = "") {
+    func scheduledSearch2(searchBar: UISearchBar, page: Int, scope: String = "") {
         let popTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(SEARCH_DELAY_IN_MS * NSEC_PER_MSEC))
         let text = searchBar.text ?? ""
         dispatch_after(popTime, dispatch_get_main_queue()) {
             if text == searchBar.text {
-                self.doSearch(text, year: "", movieTypeScope: scope)
+                self.doSearch(text, year: "", page: self.currentPage, movieTypeScope: scope)
             }
         }
     }
@@ -199,17 +208,22 @@ extension OMDBTableViewController: UISearchBarDelegate {
         self.tableView.reloadData()
     }
     
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        self.currentPage = 1
+    }
+    
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
         if searchController.active && searchController.searchBar.text?.characters.count >= 2 {
             let searchBar = searchController.searchBar
-            self.scheduledSearch2(searchController.searchBar, scope: searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex])
+            self.scheduledSearch2(searchController.searchBar, page: self.currentPage, scope: searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex])
         }
     }
         
     func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         //Filter content for search
+        self.selectedScope = selectedScope
         if searchController.active && searchController.searchBar.text?.characters.count >= 2 {
-            self.doSearch((searchController.searchBar.text)!, year: "", movieTypeScope: searchBar.scopeButtonTitles![selectedScope])
+            self.doSearch((searchController.searchBar.text)!, year: "", page: self.currentPage, movieTypeScope: searchBar.scopeButtonTitles![selectedScope])
         }
     }
 }

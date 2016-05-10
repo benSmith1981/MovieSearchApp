@@ -10,6 +10,8 @@ import Foundation
 
 class OMDBSearchService {
     
+    var totalResults:String?
+    var totalPages: Int = 0
     let APIService = APIServiceManager.sharedInstance
     static let sharedInstance = OMDBSearchService()
     
@@ -20,7 +22,12 @@ class OMDBSearchService {
             if success {
                 //parse and store json response
                 //if response is an array
-                if let jsonResponseArray = jsonResponse!["Search"] as? NSArray{
+                if let jsonResponseArray = jsonResponse![serverResponseKeys.Search.description] as? NSArray,
+                    let totalResults = jsonResponse![serverResponseKeys.totalResults.description] as? String{
+                    
+                    //Calculate total pages by looking at the remainder of the division
+                    self.totalPages = Int(totalResults)!%OMDBConstants.totalPages != 0 ? Int(totalResults)!/OMDBConstants.totalPages + 1 : Int(totalResults)!/OMDBConstants.totalPages
+                    
                     var searchResultsArray = [SearchResults]()
                     for searchResult in jsonResponseArray{
                         if let searchResult = searchResult as? BodyDataDictionary {
@@ -29,20 +36,20 @@ class OMDBSearchService {
                         }
                     }
                     //return the array of movie results
-                    onCompletion(success, error?.userInfo[NSLocalizedDescriptionKey] as? String, error?.code, nil, searchResultsArray, searchString)
+                    onCompletion(success, error?.userInfo[NSLocalizedDescriptionKey] as? String, error?.code, nil, searchResultsArray, self.totalPages ?? 0)
                     
                 }
                 
                 if let jsonResponseObject = jsonResponse {
                     let omdbSearchResponse = SearchResults.init(searchResults: jsonResponseObject, searchString: searchString)
                     //return the movie object
-                    onCompletion(success, error?.userInfo[NSLocalizedDescriptionKey] as? String, error?.code, omdbSearchResponse, nil, searchString)
+                    onCompletion(success, error?.userInfo[NSLocalizedDescriptionKey] as? String, error?.code, omdbSearchResponse, nil, self.totalPages ?? 0)
                     
                     
                 }
             } else {
                 //the request failed return the error
-                onCompletion(false, error?.userInfo[NSLocalizedDescriptionKey] as? String, error?.code, nil, nil, searchString)
+                onCompletion(false, error?.userInfo[NSLocalizedDescriptionKey] as? String, error?.code, nil, nil, self.totalPages ?? 0)
             }
         })
     }
@@ -72,7 +79,10 @@ class OMDBSearchService {
      - parameter onCompletion: APIMovieResponse the UI friendly response block with messages and codes and data
      */
     func searchOMDBDatabaseByTitle(searchString: String, page: Int, movieType: String, onCompletion: APIMovieResponse) {
-        //http://www.omdbapi.com/?s=jaws&page=1
+        //guard against maximum number of pages on server response
+        guard totalPages <= page else { return }
+        
+        //example path http://www.omdbapi.com/?s=jaws&page=1
         let path: String
         //if we have selected all then don't include scope type
         if (movieType == movieTypes.all.description){

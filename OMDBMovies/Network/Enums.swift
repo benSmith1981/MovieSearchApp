@@ -114,6 +114,8 @@ enum serverResponseKeys {
     case FilmType
     case Response
     case Error
+    case totalResults
+    case Search
     
     var description : String {
         switch self {
@@ -139,6 +141,9 @@ enum serverResponseKeys {
         case .FilmType: return "Type"
         case .Response: return "Response"
         case .Error: return "Error"
+        case .totalResults: return "totalResults"
+        case .Search: return "Search"
+
         }
     }
 }

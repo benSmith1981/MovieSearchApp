@@ -21,6 +21,7 @@ class DetailMovieView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.synopsis?.setContentOffset(CGPointZero, animated: false)
         
         if let movieInfo = movieInfo {
             movieTitle?.text = movieInfo.Title

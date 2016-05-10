@@ -10,6 +10,8 @@ import Foundation
 
 struct OMDBConstants {
     
+    static let totalPages = 10
+    
     struct baseUrls {
         static let omdbPath = "http://www.omdbapi.com/?"
         static let omdbPosters = "http://img.omdbapi.com/?apikey=[%@]&"
