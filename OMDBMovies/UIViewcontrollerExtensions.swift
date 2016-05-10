@@ -20,6 +20,7 @@ extension UIViewController {
     func displayAlertMessage(alertTitle:String, alertDescription:String) -> Void {
         let errorAlert = UIAlertController(title: alertTitle, message: alertDescription, preferredStyle: UIAlertControllerStyle.Alert)
         let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            self.view.resignFirstResponder()
         }
         errorAlert.addAction(OKAction)
         self.presentViewController(errorAlert, animated: true) {

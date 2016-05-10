@@ -28,17 +28,22 @@ class OMDBSearchService {
                             searchResultsArray.append(omdbSearchResponse)
                         }
                     }
-                    onCompletion(success, nil, nil, nil, searchResultsArray, searchString)
+                    dispatch_async(dispatch_get_main_queue()) {
+                        onCompletion(success, nil, nil, nil, searchResultsArray, searchString)
+                    }
                 }
                 
                 if let jsonResponseObject = jsonResponse {
                     let omdbSearchResponse = SearchResults.init(searchResults: jsonResponseObject, searchString: searchString)
-                    onCompletion(success, error?.userInfo[NSLocalizedDescriptionKey] as? String, self.APIService.determineErrorCode(error), omdbSearchResponse, nil, searchString)
+                    dispatch_async(dispatch_get_main_queue()) {
+                        onCompletion(success, error?.userInfo[NSLocalizedDescriptionKey] as? String, self.APIService.determineErrorCode(error), omdbSearchResponse, nil, searchString)
+                    }
                     
                 }
             } else {
-                onCompletion(false, error?.userInfo[NSLocalizedDescriptionKey] as? String, self.APIService.determineErrorCode(error), nil, nil, searchString)
-                print(error?.userInfo[NSLocalizedDescriptionKey])
+                dispatch_async(dispatch_get_main_queue()) {
+                    onCompletion(false, error?.userInfo[NSLocalizedDescriptionKey] as? String, self.APIService.determineErrorCode(error), nil, nil, searchString)
+                }
             }
         })
     }

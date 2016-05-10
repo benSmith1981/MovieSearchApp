@@ -13,7 +13,9 @@ class DetailMovieView: UIViewController {
     @IBOutlet weak var movieTitle: UILabel?
     @IBOutlet weak var synopsis: UITextView?
     @IBOutlet weak var poster: UIImageView?
-    
+    @IBOutlet weak var director: UILabel?
+    @IBOutlet weak var year: UILabel?
+
     var movieInfo: SearchResults?
 
     override func viewDidLoad() {
