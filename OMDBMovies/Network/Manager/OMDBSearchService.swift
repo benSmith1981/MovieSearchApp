@@ -20,8 +20,7 @@ class OMDBSearchService {
     func searchMovieGeneric(path: String, searchString: String, onCompletion: APIMovieResponse){
         APIService.callRequestWithAPIServiceResponse(nil, path: path, httpMethod: httpMethods.GET, onCompletion: { (success, jsonResponse, error) in
             if success {
-                //parse and store json response
-                //if response is an array
+                //we get a response array
                 if let jsonResponseArray = jsonResponse![serverResponseKeys.Search.description] as? NSArray,
                     let totalResults = jsonResponse![serverResponseKeys.totalResults.description] as? String{
                     
@@ -31,25 +30,33 @@ class OMDBSearchService {
                     var searchResultsArray = [Movie]()
                     for searchResult in jsonResponseArray{
                         if let searchResult = searchResult as? BodyDataDictionary {
+                            //parse and store json response
                             let omdbSearchResponse = Movie.init(searchResults: searchResult, searchString: searchString)
                             searchResultsArray.append(omdbSearchResponse)
                         }
                     }
                     //return the array of movie results
-                    onCompletion(success, error?.userInfo[NSLocalizedDescriptionKey] as? String, error?.code, nil, searchResultsArray, self.totalPages ?? 0)
+                    onCompletion(success, error?.userInfo[NSLocalizedDescriptionKey] as? String, self.APIService.getErrorCodeDescription(error), nil, searchResultsArray, self.totalPages ?? 0)
                     
                 }
-                
+                //we get a response object back
                 if let jsonResponseObject = jsonResponse {
+                    //parse and store json response
                     let omdbSearchResponse = Movie.init(searchResults: jsonResponseObject, searchString: searchString)
                     //return the movie object
-                    onCompletion(success, error?.userInfo[NSLocalizedDescriptionKey] as? String, error?.code, omdbSearchResponse, nil, self.totalPages ?? 0)
+                    onCompletion(success, error?.userInfo[NSLocalizedDescriptionKey] as? String, self.APIService.getErrorCodeDescription(error), omdbSearchResponse, nil, self.totalPages ?? 0)
                     
                     
                 }
             } else {
                 //the request failed return the error
-                onCompletion(false, error?.userInfo[NSLocalizedDescriptionKey] as? String, error?.code, nil, nil, self.totalPages ?? 0)
+                if let jsonResponseObject = jsonResponse {
+                    let omdbSearchResponse = Movie.init(searchResults: jsonResponseObject, searchString: searchString)
+                    onCompletion(false, error?.userInfo[NSLocalizedDescriptionKey] as? String, self.APIService.getErrorCodeDescription(error), omdbSearchResponse, nil, self.totalPages ?? 0)
+                } else {
+                    let omdbSearchResponse = Movie.init(searchResults: [serverResponseKeys.Response.description : (error?.userInfo[NSLocalizedDescriptionKey])! , serverResponseKeys.Error.description : self.APIService.getErrorCodeDescription(error)], searchString: searchString)
+                    onCompletion(false, error?.userInfo[NSLocalizedDescriptionKey] as? String, self.APIService.getErrorCodeDescription(error), omdbSearchResponse, nil, self.totalPages ?? 0)
+                }
             }
         })
     }

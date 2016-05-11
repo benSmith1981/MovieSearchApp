@@ -9,7 +9,7 @@
 import Foundation
 
 struct OMDBConstants {
-    static let timeout: NSTimeInterval = 10
+    static let timeout: NSTimeInterval = 2
     static let pagesPerRequest = 10
     
     struct baseUrls {

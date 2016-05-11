@@ -64,4 +64,15 @@ class APIServiceManager {
         //success so return that with a success domain
         return requestResult.init(success: true, errorMessage: responseMessages.success.rawValue, errorCode: responseCodes.ok200.rawValue, domain: .successDomain)
     }
+    
+    func getErrorCodeDescription(error: NSError?) -> String {
+        if let error = error {
+            if error.code == responseCodes.omdbErrorCode.rawValue {
+                return responseMessages.ombdError.rawValue
+            } else {
+                return responseMessages.networkConnectionProblem.rawValue
+            }
+        }
+        return "No Error Code"
+    }
  }

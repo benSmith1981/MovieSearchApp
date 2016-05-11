@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import Kingfisher
+
 class OMDBDetailMovieView: UIViewController {
     
     @IBOutlet weak var movieTitle: UILabel?
@@ -20,15 +22,20 @@ class OMDBDetailMovieView: UIViewController {
 
     var movieInfo: Movie?
 
+    override func viewDidAppear(animated: Bool) {
+        //if the text too big for view move to top
+        self.synopsis?.setContentOffset(CGPointZero, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.synopsis?.setContentOffset(CGPointZero, animated: false)
-        
+
+
         if let movieInfo = movieInfo {
             movieTitle?.text = movieInfo.Title
             synopsis?.text = movieInfo.Plot
-            poster?.image = UIImage(named: "placeholder")  //set placeholder image first.
-            poster?.downloadImageFrom(link: movieInfo.Poster!, contentMode: UIViewContentMode.ScaleAspectFit)  //set your image from link array.
+            
+            poster?.kf_setImageWithURL(NSURL(string: movieInfo.Poster!)!, placeholderImage: UIImage(named: "placeholder"))
             if let director = movieInfo.Director {
                 self.director?.text = "Director: " + director
             }

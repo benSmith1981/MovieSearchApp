@@ -12,6 +12,6 @@ import UIKit
 class OMBDTableCell: UITableViewCell {
     @IBOutlet weak var movieThumbnail: UIImageView?
     @IBOutlet weak var title: UILabel?
-    
-    
+    @IBOutlet weak var error: UILabel?
+
 }

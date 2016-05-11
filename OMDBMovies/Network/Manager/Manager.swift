@@ -9,7 +9,7 @@
 import Foundation
 
 typealias errorMessage = String?
-typealias errorCode = Int?
+typealias errorCode = String?
 
 /** This is the response from the API Service giving raw JSON and any error, this is the middle layer response that any implementation of OMDBs API has to unwrap the error and store the data nicely to return in an object
  */
