@@ -9,14 +9,21 @@
 import Foundation
 
 struct OMDBConstants {
-    static let timeout: NSTimeInterval = 2
+    //the timeout for the request
+    static let timeout: NSTimeInterval = 20
+    
+    //Max  many pages or results the server can show in one response
     static let pagesPerRequest = 10
+    
+    //search delay time
+    static let SEARCH_DELAY_IN_MS: UInt64 = 500
     
     struct baseUrls {
         static let omdbPath = "http://www.omdbapi.com/?"
         static let omdbPosters = "http://img.omdbapi.com/?apikey=[%@]&"
     }
 
+    //parameters in the search URL
     struct parameters {
         static let title = "t"
         static let searchTitle = "s"

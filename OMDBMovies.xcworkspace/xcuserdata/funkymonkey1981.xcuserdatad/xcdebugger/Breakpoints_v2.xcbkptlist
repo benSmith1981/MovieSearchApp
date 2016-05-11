@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OMDBMovies/Network/Manager/OMDBSearchService.swift"
-            timestampString = "484697049.911012"
+            timestampString = "484703182.777636"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "searchMovieGeneric(_:searchString:onCompletion:)"
             landmarkType = "5">
             <Locations>
@@ -58,7 +58,7 @@
                   moduleName = "OMDBMovies"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/funkymonkey1981/Documents/MovieSearchApp/OMDBMovies/Network/Manager/OMDBSearchService.swift"
-                  timestampString = "484700080.179147"
+                  timestampString = "484701550.030754"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
@@ -73,7 +73,7 @@
                   moduleName = "OMDBMovies"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/funkymonkey1981/Documents/MovieSearchApp/OMDBMovies/Network/Manager/OMDBSearchService.swift"
-                  timestampString = "484700080.179624"
+                  timestampString = "484701550.03156"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OMDBMovies/OMDBTableViewController.swift"
-            timestampString = "484700444.370838"
+            timestampString = "484703488.722601"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -105,44 +105,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OMDBMovies/Network/DAO/Movie.swift"
-            timestampString = "484698836.057539"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "init(searchResults:searchString:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OMDBMovies/Network/DAO/Movie.swift"
-            timestampString = "484698886.119401"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "init(searchResults:searchString:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "OMDBMovies/Network/Manager/OMDBSearchService.swift"
-            timestampString = "484699655.101825"
+            timestampString = "484703182.777636"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "searchMovieGeneric(_:searchString:onCompletion:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -153,13 +121,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OMDBMovies/OMDBTableViewController.swift"
-            timestampString = "484700444.370838"
+            filePath = "OMDBMovies/Network/Manager/OMDBSearchService.swift"
+            timestampString = "484703182.777636"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "viewDidAppear(_:)"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "searchMovieGeneric(_:searchString:onCompletion:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

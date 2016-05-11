@@ -65,6 +65,10 @@ class APIServiceManager {
         return requestResult.init(success: true, errorMessage: responseMessages.success.rawValue, errorCode: responseCodes.ok200.rawValue, domain: .successDomain)
     }
     
+    /** Converts the error string from the code
+     parameter error: NSError? error found
+     return String the converted error string from the code
+     */
     func getErrorCodeDescription(error: NSError?) -> String {
         if let error = error {
             if error.code == responseCodes.omdbErrorCode.rawValue {

@@ -10,13 +10,18 @@ import Foundation
 
 class OMDBSearchService {
     
-    var totalResults:String?
-    var totalPages: Int = 0
-    let APIService = APIServiceManager.sharedInstance
+    var totalResults:String? //total search results
+    var totalPages: Int = 0 // total pages calculated from total results
+    let APIService = APIServiceManager.sharedInstance //Shorter common call
     static let sharedInstance = OMDBSearchService()
     
     private init() {}
     
+    /** Generic function that contains commmonly used code to deal with the response from the APIService layer, so that the UI can have a nice movie object(s) and user friendly error messages
+     - parameter path: String, 
+     - parameter searchString: String, 
+     - parameter onCompletion: APIMovieResponse
+     */
     func searchMovieGeneric(path: String, searchString: String, onCompletion: APIMovieResponse){
         APIService.callRequestWithAPIServiceResponse(nil, path: path, httpMethod: httpMethods.GET, onCompletion: { (success, jsonResponse, error) in
             if success {
@@ -48,12 +53,13 @@ class OMDBSearchService {
                     
                     
                 }
-            } else {
-                //the request failed return the error
+            } else { //the request failed return the error
                 if let jsonResponseObject = jsonResponse {
+                    //send back a movie object so the errors are displayed nicely on the table
                     let omdbSearchResponse = Movie.init(searchResults: jsonResponseObject, searchString: searchString)
                     onCompletion(false, error?.userInfo[NSLocalizedDescriptionKey] as? String, self.APIService.getErrorCodeDescription(error), omdbSearchResponse, nil, self.totalPages ?? 0)
                 } else {
+                    //send back a movie object so the errors are displayed nicely on the table
                     let omdbSearchResponse = Movie.init(searchResults: [serverResponseKeys.Response.description : (error?.userInfo[NSLocalizedDescriptionKey])! , serverResponseKeys.Error.description : self.APIService.getErrorCodeDescription(error)], searchString: searchString)
                     onCompletion(false, error?.userInfo[NSLocalizedDescriptionKey] as? String, self.APIService.getErrorCodeDescription(error), omdbSearchResponse, nil, self.totalPages ?? 0)
                 }
@@ -70,9 +76,9 @@ class OMDBSearchService {
      - parameter response: responseTypes Do we want a JSON or an XML response
      - parameter onCompletion: APIMovieResponse the UI friendly response block with messages and codes and data
      */
-    func searchMovieDetailsDatabase(searchString: String, year: String, plot: plotTypes, response: responseTypes, onCompletion: APIMovieResponse) {
+    func searchMovieDetailsDatabase(searchString: String, plot: plotTypes, response: responseTypes, onCompletion: APIMovieResponse) {
         //example path http://www.omdbapi.com/?t=12&y=&plot=short&r=json
-        let path = OMDBConstants.baseUrls.omdbPath + OMDBConstants.parameters.title + "=" + searchString + "&" + OMDBConstants.parameters.year + "=" + year + "&" + OMDBConstants.parameters.plot + "=" + plot.description +  "&" + OMDBConstants.parameters.responseDataType + "=" + response.description + "&" + OMDBConstants.parameters.tomatoes + "=true"
+        let path = OMDBConstants.baseUrls.omdbPath + OMDBConstants.parameters.title + "=" + searchString + "&" + OMDBConstants.parameters.plot + "=" + plot.description +  "&" + OMDBConstants.parameters.responseDataType + "=" + response.description + "&" + OMDBConstants.parameters.tomatoes + "=true"
         
         searchMovieGeneric(path, searchString: searchString, onCompletion: onCompletion)
     }

@@ -30,7 +30,7 @@
                                                 <constraint firstAttribute="width" constant="83" id="MZs-dB-4P7"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ala-Xz-yo6">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ala-Xz-yo6">
                                             <rect key="frame" x="99" y="8" width="460" height="85"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -44,17 +44,17 @@
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Ala-Xz-yo6" secondAttribute="trailing" constant="33" id="3fk-FU-55c"/>
                                         <constraint firstItem="Q1a-lX-EIa" firstAttribute="trailing" secondItem="HgM-Xg-AKJ" secondAttribute="trailingMargin" id="5hs-mS-zQS"/>
-                                        <constraint firstItem="Eij-nn-cts" firstAttribute="top" secondItem="Ala-Xz-yo6" secondAttribute="top" id="RVi-38-2I1"/>
+                                        <constraint firstItem="Ala-Xz-yo6" firstAttribute="bottom" secondItem="Eij-nn-cts" secondAttribute="bottom" id="8lz-JO-Cmw"/>
                                         <constraint firstItem="Q1a-lX-EIa" firstAttribute="top" secondItem="HgM-Xg-AKJ" secondAttribute="topMargin" constant="-8" id="U67-wG-MV0"/>
-                                        <constraint firstItem="Eij-nn-cts" firstAttribute="bottom" secondItem="Ala-Xz-yo6" secondAttribute="bottom" id="Vfd-f7-69H"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Q1a-lX-EIa" secondAttribute="bottom" constant="-8" id="Wok-jO-yxa"/>
                                         <constraint firstItem="Q1a-lX-EIa" firstAttribute="leading" secondItem="HgM-Xg-AKJ" secondAttribute="leadingMargin" id="aPF-xz-S5O"/>
                                         <constraint firstItem="Eij-nn-cts" firstAttribute="centerY" secondItem="HgM-Xg-AKJ" secondAttribute="centerY" id="eG9-Am-A19"/>
-                                        <constraint firstItem="Ala-Xz-yo6" firstAttribute="leading" secondItem="Eij-nn-cts" secondAttribute="trailing" constant="8" symbolic="YES" id="fnn-lP-jlK"/>
+                                        <constraint firstItem="Ala-Xz-yo6" firstAttribute="top" secondItem="Eij-nn-cts" secondAttribute="top" id="eOZ-Lv-ahp"/>
                                         <constraint firstItem="Eij-nn-cts" firstAttribute="leading" secondItem="HgM-Xg-AKJ" secondAttribute="leadingMargin" id="km6-43-Y0G"/>
                                         <constraint firstItem="Eij-nn-cts" firstAttribute="top" secondItem="HgM-Xg-AKJ" secondAttribute="topMargin" id="u7o-GI-Oo0"/>
-                                        <constraint firstItem="Ala-Xz-yo6" firstAttribute="trailing" secondItem="HgM-Xg-AKJ" secondAttribute="trailingMargin" id="xSo-tF-1IN"/>
+                                        <constraint firstItem="Ala-Xz-yo6" firstAttribute="leading" secondItem="Eij-nn-cts" secondAttribute="trailing" constant="8" symbolic="YES" id="xE7-OV-eIx"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
