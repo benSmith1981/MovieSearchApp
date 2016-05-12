@@ -17,38 +17,6 @@
             endingLineNumber = "122"
             landmarkName = "makeRequest(_:body:httpMethod:httpHeader:onCompletion:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OMDBMovies.Manager.makeRequest (Swift.String, body : Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;, httpMethod : OMDBMovies.httpMethods, httpHeader : Swift.Dictionary&lt;Swift.String, Swift.String&gt;, onCompletion : (Swift.Bool, Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "OMDBMovies"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bensmith/Documents/MovieSearchApp/OMDBMovies/Network/Manager/Manager.swift"
-                  timestampString = "484753917.585402"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "122"
-                  endingLineNumber = "122"
-                  offsetFromSymbolStart = "1404">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OMDBMovies.Manager.(makeRequest (Swift.String, body : Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;, httpMethod : OMDBMovies.httpMethods, httpHeader : Swift.Dictionary&lt;Swift.String, Swift.String&gt;, onCompletion : (Swift.Bool, Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #2)"
-                  moduleName = "OMDBMovies"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bensmith/Documents/MovieSearchApp/OMDBMovies/Network/Manager/Manager.swift"
-                  timestampString = "484753917.585624"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "123"
-                  endingLineNumber = "123"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
