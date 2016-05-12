@@ -23,13 +23,13 @@ class OMDBDetailMovieView: UIViewController {
     var movieInfo: Movie?
 
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         //if the text too long for textview move to top
         self.synopsis?.setContentOffset(CGPointZero, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         if let movieInfo = movieInfo {
             movieTitle?.text = movieInfo.Title
             synopsis?.text = movieInfo.Plot
@@ -37,6 +37,7 @@ class OMDBDetailMovieView: UIViewController {
             poster?.kf_setImageWithURL(NSURL(string: movieInfo.Poster!)!, placeholderImage: UIImage(named: "placeholder"))
             if let director = movieInfo.Director,
                 let currentText = self.director?.text{
+                
                 self.director?.text = currentText + director
             }
             

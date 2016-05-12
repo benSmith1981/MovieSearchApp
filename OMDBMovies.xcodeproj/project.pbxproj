@@ -75,8 +75,6 @@
 		1850F1E5C73FD93A08F95924 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9054CC811CE1F16400F575E2 /* RequestResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestResult.swift; sourceTree = "<group>"; };
 		909AFF6B1CE493A200459C71 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		909AFF6E1CE4943200459C71 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
-		909AFF6F1CE4943200459C71 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		909AFF701CE4943200459C71 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		909AFF711CE4AC3B00459C71 /* NSObject+AGi18n.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AGi18n.h"; sourceTree = "<group>"; };
 		909AFF721CE4AC3B00459C71 /* NSObject+AGi18n.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AGi18n.m"; sourceTree = "<group>"; };
@@ -559,7 +557,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				BEA3341C1CDDE88A00F5755B /* Base */,
-				909AFF6E1CE4943200459C71 /* nl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -568,7 +565,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				BEA334211CDDE88A00F5755B /* Base */,
-				909AFF6F1CE4943200459C71 /* nl */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
