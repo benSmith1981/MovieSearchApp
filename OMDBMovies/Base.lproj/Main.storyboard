@@ -71,6 +71,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="bxW-kn-YP2"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="iCw-Kx-sss" id="EMA-2t-PMy"/>
                     </connections>
@@ -172,6 +173,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jg7-eA-6Gn"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
@@ -192,6 +194,7 @@
         <scene sceneID="cnp-Wf-HCA">
             <objects>
                 <navigationController id="Cne-5Q-XV4" sceneMemberID="viewController">
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lkd-Wu-zAO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
