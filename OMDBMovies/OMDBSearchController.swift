@@ -57,7 +57,9 @@ extension OMDBTableViewController: UISearchBarDelegate {
         }
     }
     
-    /** Because of localizable strings the s
+    /** Because of localizable strings the titles are differen to the parameters needed in the OMDB API, so we need to filter what title we have (in whatever language) and return the correct parameter
+     - parameter scopeTitle: String Scope title from the search bar
+     - return String The scope string title
      */
     func determineScope(scopeTitle: String) -> String {
         var scope: String
