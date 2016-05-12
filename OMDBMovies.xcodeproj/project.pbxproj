@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		9054CC821CE1F16400F575E2 /* RequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9054CC811CE1F16400F575E2 /* RequestResult.swift */; };
 		909AFF6A1CE493A200459C71 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 909AFF6C1CE493A200459C71 /* Localizable.strings */; };
+		909AFF861CE4AC3B00459C71 /* NSObject+AGi18n.m in Sources */ = {isa = PBXBuildFile; fileRef = 909AFF721CE4AC3B00459C71 /* NSObject+AGi18n.m */; };
+		909AFF871CE4AC3B00459C71 /* UIBarButtonItem+AGi18n.m in Sources */ = {isa = PBXBuildFile; fileRef = 909AFF741CE4AC3B00459C71 /* UIBarButtonItem+AGi18n.m */; };
+		909AFF881CE4AC3B00459C71 /* UIButton+AGi18n.m in Sources */ = {isa = PBXBuildFile; fileRef = 909AFF761CE4AC3B00459C71 /* UIButton+AGi18n.m */; };
+		909AFF891CE4AC3B00459C71 /* UILabel+AGi18n.m in Sources */ = {isa = PBXBuildFile; fileRef = 909AFF781CE4AC3B00459C71 /* UILabel+AGi18n.m */; };
+		909AFF8A1CE4AC3B00459C71 /* UINavigationItem+AGi18n.m in Sources */ = {isa = PBXBuildFile; fileRef = 909AFF7A1CE4AC3B00459C71 /* UINavigationItem+AGi18n.m */; };
+		909AFF8B1CE4AC3B00459C71 /* UISearchBar+AGi18n.m in Sources */ = {isa = PBXBuildFile; fileRef = 909AFF7C1CE4AC3B00459C71 /* UISearchBar+AGi18n.m */; };
+		909AFF8C1CE4AC3B00459C71 /* UISegmentedControl+AGi18n.m in Sources */ = {isa = PBXBuildFile; fileRef = 909AFF7E1CE4AC3B00459C71 /* UISegmentedControl+AGi18n.m */; };
+		909AFF8D1CE4AC3B00459C71 /* UITabBarItem+AGi18n.m in Sources */ = {isa = PBXBuildFile; fileRef = 909AFF801CE4AC3B00459C71 /* UITabBarItem+AGi18n.m */; };
+		909AFF8E1CE4AC3B00459C71 /* UITextField+AGi18n.m in Sources */ = {isa = PBXBuildFile; fileRef = 909AFF821CE4AC3B00459C71 /* UITextField+AGi18n.m */; };
+		909AFF8F1CE4AC3B00459C71 /* UITextView+AGi18n.m in Sources */ = {isa = PBXBuildFile; fileRef = 909AFF841CE4AC3B00459C71 /* UITextView+AGi18n.m */; };
 		BEA334181CDDE88A00F5755B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334171CDDE88A00F5755B /* AppDelegate.swift */; };
 		BEA3341A1CDDE88A00F5755B /* OMDBTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334191CDDE88A00F5755B /* OMDBTableViewController.swift */; };
 		BEA3341D1CDDE88A00F5755B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEA3341B1CDDE88A00F5755B /* Main.storyboard */; };
@@ -68,6 +78,26 @@
 		909AFF6E1CE4943200459C71 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
 		909AFF6F1CE4943200459C71 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		909AFF701CE4943200459C71 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		909AFF711CE4AC3B00459C71 /* NSObject+AGi18n.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AGi18n.h"; sourceTree = "<group>"; };
+		909AFF721CE4AC3B00459C71 /* NSObject+AGi18n.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AGi18n.m"; sourceTree = "<group>"; };
+		909AFF731CE4AC3B00459C71 /* UIBarButtonItem+AGi18n.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+AGi18n.h"; sourceTree = "<group>"; };
+		909AFF741CE4AC3B00459C71 /* UIBarButtonItem+AGi18n.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+AGi18n.m"; sourceTree = "<group>"; };
+		909AFF751CE4AC3B00459C71 /* UIButton+AGi18n.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+AGi18n.h"; sourceTree = "<group>"; };
+		909AFF761CE4AC3B00459C71 /* UIButton+AGi18n.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+AGi18n.m"; sourceTree = "<group>"; };
+		909AFF771CE4AC3B00459C71 /* UILabel+AGi18n.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+AGi18n.h"; sourceTree = "<group>"; };
+		909AFF781CE4AC3B00459C71 /* UILabel+AGi18n.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+AGi18n.m"; sourceTree = "<group>"; };
+		909AFF791CE4AC3B00459C71 /* UINavigationItem+AGi18n.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+AGi18n.h"; sourceTree = "<group>"; };
+		909AFF7A1CE4AC3B00459C71 /* UINavigationItem+AGi18n.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+AGi18n.m"; sourceTree = "<group>"; };
+		909AFF7B1CE4AC3B00459C71 /* UISearchBar+AGi18n.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISearchBar+AGi18n.h"; sourceTree = "<group>"; };
+		909AFF7C1CE4AC3B00459C71 /* UISearchBar+AGi18n.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISearchBar+AGi18n.m"; sourceTree = "<group>"; };
+		909AFF7D1CE4AC3B00459C71 /* UISegmentedControl+AGi18n.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISegmentedControl+AGi18n.h"; sourceTree = "<group>"; };
+		909AFF7E1CE4AC3B00459C71 /* UISegmentedControl+AGi18n.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISegmentedControl+AGi18n.m"; sourceTree = "<group>"; };
+		909AFF7F1CE4AC3B00459C71 /* UITabBarItem+AGi18n.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarItem+AGi18n.h"; sourceTree = "<group>"; };
+		909AFF801CE4AC3B00459C71 /* UITabBarItem+AGi18n.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarItem+AGi18n.m"; sourceTree = "<group>"; };
+		909AFF811CE4AC3B00459C71 /* UITextField+AGi18n.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+AGi18n.h"; sourceTree = "<group>"; };
+		909AFF821CE4AC3B00459C71 /* UITextField+AGi18n.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+AGi18n.m"; sourceTree = "<group>"; };
+		909AFF831CE4AC3B00459C71 /* UITextView+AGi18n.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+AGi18n.h"; sourceTree = "<group>"; };
+		909AFF841CE4AC3B00459C71 /* UITextView+AGi18n.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+AGi18n.m"; sourceTree = "<group>"; };
 		BEA334141CDDE88A00F5755B /* OMDBMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OMDBMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEA334171CDDE88A00F5755B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEA334191CDDE88A00F5755B /* OMDBTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMDBTableViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +160,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		909AFF851CE4AC3B00459C71 /* AGi18nLocalizableStrings */ = {
+			isa = PBXGroup;
+			children = (
+				909AFF711CE4AC3B00459C71 /* NSObject+AGi18n.h */,
+				909AFF721CE4AC3B00459C71 /* NSObject+AGi18n.m */,
+				909AFF731CE4AC3B00459C71 /* UIBarButtonItem+AGi18n.h */,
+				909AFF741CE4AC3B00459C71 /* UIBarButtonItem+AGi18n.m */,
+				909AFF751CE4AC3B00459C71 /* UIButton+AGi18n.h */,
+				909AFF761CE4AC3B00459C71 /* UIButton+AGi18n.m */,
+				909AFF771CE4AC3B00459C71 /* UILabel+AGi18n.h */,
+				909AFF781CE4AC3B00459C71 /* UILabel+AGi18n.m */,
+				909AFF791CE4AC3B00459C71 /* UINavigationItem+AGi18n.h */,
+				909AFF7A1CE4AC3B00459C71 /* UINavigationItem+AGi18n.m */,
+				909AFF7B1CE4AC3B00459C71 /* UISearchBar+AGi18n.h */,
+				909AFF7C1CE4AC3B00459C71 /* UISearchBar+AGi18n.m */,
+				909AFF7D1CE4AC3B00459C71 /* UISegmentedControl+AGi18n.h */,
+				909AFF7E1CE4AC3B00459C71 /* UISegmentedControl+AGi18n.m */,
+				909AFF7F1CE4AC3B00459C71 /* UITabBarItem+AGi18n.h */,
+				909AFF801CE4AC3B00459C71 /* UITabBarItem+AGi18n.m */,
+				909AFF811CE4AC3B00459C71 /* UITextField+AGi18n.h */,
+				909AFF821CE4AC3B00459C71 /* UITextField+AGi18n.m */,
+				909AFF831CE4AC3B00459C71 /* UITextView+AGi18n.h */,
+				909AFF841CE4AC3B00459C71 /* UITextView+AGi18n.m */,
+			);
+			name = AGi18nLocalizableStrings;
+			path = "../../IOSApps/yona-app-ios/Yona/Yona/Others/lib";
+			sourceTree = "<group>";
+		};
 		BEA3340B1CDDE88A00F5755B = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +213,7 @@
 		BEA334161CDDE88A00F5755B /* OMDBMovies */ = {
 			isa = PBXGroup;
 			children = (
+				909AFF851CE4AC3B00459C71 /* AGi18nLocalizableStrings */,
 				BEA3345C1CDFAD1E00F5755B /* MBProgressLoader.swift */,
 				BEA3345B1CDFACF500F5755B /* OMDBMovies-Bridging-Header.h */,
 				BEA3344E1CDDF54300F5755B /* Enums.swift */,
@@ -415,19 +474,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				909AFF8B1CE4AC3B00459C71 /* UISearchBar+AGi18n.m in Sources */,
+				909AFF8D1CE4AC3B00459C71 /* UITabBarItem+AGi18n.m in Sources */,
 				9054CC821CE1F16400F575E2 /* RequestResult.swift in Sources */,
+				909AFF861CE4AC3B00459C71 /* NSObject+AGi18n.m in Sources */,
+				909AFF871CE4AC3B00459C71 /* UIBarButtonItem+AGi18n.m in Sources */,
+				909AFF8F1CE4AC3B00459C71 /* UITextView+AGi18n.m in Sources */,
 				BEA334571CDE73E100F5755B /* OMDBDetailMovieView.swift in Sources */,
 				BEA3341A1CDDE88A00F5755B /* OMDBTableViewController.swift in Sources */,
 				BEA3345D1CDFAD1E00F5755B /* MBProgressLoader.swift in Sources */,
 				BEA3344A1CDDEFE600F5755B /* APIServiceManager.swift in Sources */,
 				BEA334511CDDFFF000F5755B /* OMDBSearchService.swift in Sources */,
 				BEA334181CDDE88A00F5755B /* AppDelegate.swift in Sources */,
+				909AFF881CE4AC3B00459C71 /* UIButton+AGi18n.m in Sources */,
 				BEA334531CDE09F900F5755B /* Movie.swift in Sources */,
+				909AFF8E1CE4AC3B00459C71 /* UITextField+AGi18n.m in Sources */,
+				909AFF8C1CE4AC3B00459C71 /* UISegmentedControl+AGi18n.m in Sources */,
 				BED576AC1CE3F60E00E89C25 /* OMDBSearchController.swift in Sources */,
 				BEA3344B1CDDEFE600F5755B /* Manager.swift in Sources */,
 				BEA3344F1CDDF54300F5755B /* Enums.swift in Sources */,
 				BEA334551CDE69C000F5755B /* OMDBTableCell.swift in Sources */,
 				BEA3344D1CDDF01600F5755B /* OMDBConstants.swift in Sources */,
+				909AFF8A1CE4AC3B00459C71 /* UINavigationItem+AGi18n.m in Sources */,
+				909AFF891CE4AC3B00459C71 /* UILabel+AGi18n.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

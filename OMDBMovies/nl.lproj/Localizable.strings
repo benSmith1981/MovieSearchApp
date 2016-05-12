@@ -15,3 +15,8 @@
 "movietypes.series" = "serie";
 "movietypes.episode" = "Aflevering";
 "movietypes.all" = "Alle";
+
+"moviedetail.director" = "Directeur: ";
+"moviedetail.actors" = "Acteurs: ";
+"moviedetail.year" = "Jaar: ";
+"moviedetail.rottentomatoerating" = "Rotten Tomatoe cijfer: ";

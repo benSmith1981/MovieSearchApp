@@ -16,4 +16,7 @@
 "movietypes.episode" = "Episode";
 "movietypes.all" = "All";
 
-
+"moviedetail.director" = "Director: ";
+"moviedetail.actors" = "Actors: ";
+"moviedetail.year" = "Year: ";
+"moviedetail.rottentomatoerating" = "Rotten Tomatoe Rating: ";

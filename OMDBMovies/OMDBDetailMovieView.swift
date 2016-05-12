@@ -35,20 +35,24 @@ class OMDBDetailMovieView: UIViewController {
             synopsis?.text = movieInfo.Plot
             
             poster?.kf_setImageWithURL(NSURL(string: movieInfo.Poster!)!, placeholderImage: UIImage(named: "placeholder"))
-            if let director = movieInfo.Director {
-                self.director?.text = "Director: " + director
+            if let director = movieInfo.Director,
+                let currentText = self.director?.text{
+                self.director?.text = currentText + director
             }
             
-            if let actors = movieInfo.Actors {
-                self.actors?.text = "Actors: " + actors
+            if let actors = movieInfo.Actors,
+                let currentText = self.actors?.text{
+                self.actors?.text = currentText + actors
             }
             
-            if let year = movieInfo.Year {
-                self.year?.text = "Year: " + year
+            if let year = movieInfo.Year,
+                let currentText = self.year?.text{
+                self.year?.text = currentText + year
             }
             
-            if let rottenTomatoeRating = movieInfo.tomatoeRating {
-                self.rottenTomatoeRating?.text = "Rotten Tomatoe Rating: " + rottenTomatoeRating
+            if let rottenTomatoeRating = movieInfo.tomatoeRating,
+                currentText = self.rottenTomatoeRating?.text{
+                self.rottenTomatoeRating?.text = currentText + rottenTomatoeRating
             }
         }
     }
