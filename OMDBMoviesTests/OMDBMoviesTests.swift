@@ -21,11 +21,6 @@ class OMDBMoviesTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock {
@@ -33,4 +28,19 @@ class OMDBMoviesTests: XCTestCase {
         }
     }
     
+    func testSetServerCodeMessageReturnsRightErrorsToUIWithOMDBTypeError() {
+        let errorMessage = "Test error"
+        
+        let errorDict = ["Error" : errorMessage]
+        let requestReult = APIServiceManager.sharedInstance.setServerCodeMessage(errorDict, error: nil)
+        
+        //we shoudl get the error message we passed in
+        XCTAssert(requestReult.errorMessage == errorMessage)
+        //the omdb error code
+        XCTAssert(requestReult.errorCode == responseCodes.omdbErrorCode.rawValue)
+        //and domain
+        XCTAssert(requestReult.domain == errorDomains.ombdErrorDomain.rawValue)
+        //and a fail because this is an error from OMDB
+        XCTAssert(!requestReult.success)
+    }
 }
