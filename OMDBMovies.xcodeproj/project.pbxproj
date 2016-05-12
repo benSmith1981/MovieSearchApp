@@ -14,7 +14,7 @@
 		BEA3341D1CDDE88A00F5755B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEA3341B1CDDE88A00F5755B /* Main.storyboard */; };
 		BEA3341F1CDDE88A00F5755B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEA3341E1CDDE88A00F5755B /* Assets.xcassets */; };
 		BEA334221CDDE88A00F5755B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEA334201CDDE88A00F5755B /* LaunchScreen.storyboard */; };
-		BEA3342D1CDDE88A00F5755B /* OMDBMoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA3342C1CDDE88A00F5755B /* OMDBMoviesTests.swift */; };
+		BEA3342D1CDDE88A00F5755B /* OMDBErrorMessagingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA3342C1CDDE88A00F5755B /* OMDBErrorMessagingTests.swift */; };
 		BEA334381CDDE88A00F5755B /* OMDBMoviesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334371CDDE88A00F5755B /* OMDBMoviesUITests.swift */; };
 		BEA3344A1CDDEFE600F5755B /* APIServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334481CDDEFE600F5755B /* APIServiceManager.swift */; };
 		BEA3344B1CDDEFE600F5755B /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334491CDDEFE600F5755B /* Manager.swift */; };
@@ -27,6 +27,20 @@
 		BEA3345A1CDF9AE000F5755B /* UIViewcontrollerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334591CDF9AE000F5755B /* UIViewcontrollerExtensions.swift */; };
 		BEA3345D1CDFAD1E00F5755B /* MBProgressLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA3345C1CDFAD1E00F5755B /* MBProgressLoader.swift */; };
 		BED576AC1CE3F60E00E89C25 /* OMDBSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED576AB1CE3F60E00E89C25 /* OMDBSearchController.swift */; };
+		BED576AE1CE4777000E89C25 /* OMDBSearchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED576AD1CE4777000E89C25 /* OMDBSearchServiceTests.swift */; };
+		BED576AF1CE4782400E89C25 /* OMDBSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334501CDDFFEF00F5755B /* OMDBSearchService.swift */; };
+		BED576B01CE4788E00E89C25 /* APIServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334481CDDEFE600F5755B /* APIServiceManager.swift */; };
+		BED576B11CE4789000E89C25 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334491CDDEFE600F5755B /* Manager.swift */; };
+		BED576B21CE4789700E89C25 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA3344E1CDDF54300F5755B /* Enums.swift */; };
+		BED576B31CE4789700E89C25 /* OMDBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA3344C1CDDF01600F5755B /* OMDBConstants.swift */; };
+		BED576B41CE4789900E89C25 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334521CDE09F900F5755B /* Movie.swift */; };
+		BED576B51CE4789D00E89C25 /* RequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9054CC811CE1F16400F575E2 /* RequestResult.swift */; };
+		BED576B61CE4789D00E89C25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334171CDDE88A00F5755B /* AppDelegate.swift */; };
+		BED576B71CE4789D00E89C25 /* OMDBSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED576AB1CE3F60E00E89C25 /* OMDBSearchController.swift */; };
+		BED576B81CE4789D00E89C25 /* OMDBTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334191CDDE88A00F5755B /* OMDBTableViewController.swift */; };
+		BED576B91CE4789D00E89C25 /* OMDBTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334541CDE69C000F5755B /* OMDBTableCell.swift */; };
+		BED576BA1CE4789D00E89C25 /* OMDBDetailMovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334561CDE73E100F5755B /* OMDBDetailMovieView.swift */; };
+		BED576BB1CE479AA00E89C25 /* MBProgressLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA3345C1CDFAD1E00F5755B /* MBProgressLoader.swift */; };
 		C652EE4112C517513A69D0D9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1850F1E5C73FD93A08F95924 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,7 +74,7 @@
 		BEA334211CDDE88A00F5755B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BEA334231CDDE88A00F5755B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEA334281CDDE88A00F5755B /* OMDBMoviesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OMDBMoviesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BEA3342C1CDDE88A00F5755B /* OMDBMoviesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMDBMoviesTests.swift; sourceTree = "<group>"; };
+		BEA3342C1CDDE88A00F5755B /* OMDBErrorMessagingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMDBErrorMessagingTests.swift; sourceTree = "<group>"; };
 		BEA3342E1CDDE88A00F5755B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEA334331CDDE88A00F5755B /* OMDBMoviesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OMDBMoviesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEA334371CDDE88A00F5755B /* OMDBMoviesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMDBMoviesUITests.swift; sourceTree = "<group>"; };
@@ -77,6 +91,7 @@
 		BEA3345B1CDFACF500F5755B /* OMDBMovies-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OMDBMovies-Bridging-Header.h"; sourceTree = "<group>"; };
 		BEA3345C1CDFAD1E00F5755B /* MBProgressLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBProgressLoader.swift; sourceTree = "<group>"; };
 		BED576AB1CE3F60E00E89C25 /* OMDBSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDBSearchController.swift; sourceTree = "<group>"; };
+		BED576AD1CE4777000E89C25 /* OMDBSearchServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDBSearchServiceTests.swift; sourceTree = "<group>"; };
 		BF1E272EACCB514ACA9145AE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,8 +176,9 @@
 		BEA3342B1CDDE88A00F5755B /* OMDBMoviesTests */ = {
 			isa = PBXGroup;
 			children = (
-				BEA3342C1CDDE88A00F5755B /* OMDBMoviesTests.swift */,
+				BEA3342C1CDDE88A00F5755B /* OMDBErrorMessagingTests.swift */,
 				BEA3342E1CDDE88A00F5755B /* Info.plist */,
+				BED576AD1CE4777000E89C25 /* OMDBSearchServiceTests.swift */,
 			);
 			path = OMDBMoviesTests;
 			sourceTree = "<group>";
@@ -427,7 +443,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEA3342D1CDDE88A00F5755B /* OMDBMoviesTests.swift in Sources */,
+				BED576B01CE4788E00E89C25 /* APIServiceManager.swift in Sources */,
+				BED576B81CE4789D00E89C25 /* OMDBTableViewController.swift in Sources */,
+				BED576BA1CE4789D00E89C25 /* OMDBDetailMovieView.swift in Sources */,
+				BEA3342D1CDDE88A00F5755B /* OMDBErrorMessagingTests.swift in Sources */,
+				BED576AE1CE4777000E89C25 /* OMDBSearchServiceTests.swift in Sources */,
+				BED576B91CE4789D00E89C25 /* OMDBTableCell.swift in Sources */,
+				BED576B51CE4789D00E89C25 /* RequestResult.swift in Sources */,
+				BED576AF1CE4782400E89C25 /* OMDBSearchService.swift in Sources */,
+				BED576B21CE4789700E89C25 /* Enums.swift in Sources */,
+				BED576B11CE4789000E89C25 /* Manager.swift in Sources */,
+				BED576B41CE4789900E89C25 /* Movie.swift in Sources */,
+				BED576B61CE4789D00E89C25 /* AppDelegate.swift in Sources */,
+				BED576B31CE4789700E89C25 /* OMDBConstants.swift in Sources */,
+				BED576B71CE4789D00E89C25 /* OMDBSearchController.swift in Sources */,
+				BED576BB1CE479AA00E89C25 /* MBProgressLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

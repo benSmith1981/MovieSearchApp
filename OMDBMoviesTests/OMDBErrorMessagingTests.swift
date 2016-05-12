@@ -43,4 +43,22 @@ class OMDBMoviesTests: XCTestCase {
         //and a fail because this is an error from OMDB
         XCTAssert(!requestReult.success)
     }
+    
+    func testSetServerCodeMessageReturnsRightErrorsToUIWithNSErrorType() {
+        let errorMessage = responseMessages.networkConnectionProblem.rawValue
+        let errorCode = responseCodes.connectionFail400.rawValue
+        let domain = errorDomains.networkErrorDomain.rawValue
+        
+        let error = NSError.init(domain: domain, code: errorCode, userInfo: [NSLocalizedDescriptionKey: errorMessage])
+        let requestReult = APIServiceManager.sharedInstance.setServerCodeMessage(nil, error: error)
+        
+        //we shoudl get the error message we passed in
+        XCTAssert(requestReult.errorMessage == errorMessage)
+        //the omdb error code
+        XCTAssert(requestReult.errorCode == errorCode)
+        //and domain
+        XCTAssert(requestReult.domain == domain)
+        //and a fail because this is an error from OMDB
+        XCTAssert(!requestReult.success)
+    }
 }

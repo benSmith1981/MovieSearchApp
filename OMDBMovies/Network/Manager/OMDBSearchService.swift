@@ -60,8 +60,20 @@ class OMDBSearchService {
                     onCompletion(false, error?.userInfo[NSLocalizedDescriptionKey] as? String, self.APIService.getErrorCodeDescription(error), omdbSearchResponse, nil, self.totalPages ?? 0)
                 } else {
                     //send back a movie object so the errors are displayed nicely on the table
-                    let omdbSearchResponse = Movie.init(searchResults: [serverResponseKeys.Response.description : (error?.userInfo[NSLocalizedDescriptionKey])! , serverResponseKeys.Error.description : self.APIService.getErrorCodeDescription(error)], searchString: searchString)
-                    onCompletion(false, error?.userInfo[NSLocalizedDescriptionKey] as? String, self.APIService.getErrorCodeDescription(error), omdbSearchResponse, nil, self.totalPages ?? 0)
+                    if let error = error {
+                        if let errorDescription = error.userInfo["NSDebugDescription" ?? NSLocalizedDescriptionKey ?? NSLocalizedFailureReasonErrorKey ?? NSLocalizedRecoverySuggestionErrorKey ?? NSLocalizedRecoveryOptionsErrorKey ?? NSRecoveryAttempterErrorKey] {
+                            let omdbSearchResponse = Movie.init(searchResults: [serverResponseKeys.Response.description : errorDescription , serverResponseKeys.Error.description : self.APIService.getErrorCodeDescription(error)], searchString: searchString)
+                            onCompletion(false, error.userInfo[NSLocalizedDescriptionKey] as? String, self.APIService.getErrorCodeDescription(error), omdbSearchResponse, nil, self.totalPages ?? 0)
+                        } else {
+                            //no localised description but we have an NSError
+                            let omdbSearchResponse = Movie.init(searchResults: [serverResponseKeys.Response.description : "None" , serverResponseKeys.Error.description : self.APIService.getErrorCodeDescription(error)], searchString: searchString)
+                            onCompletion(false, "Error Description Unknown", self.APIService.getErrorCodeDescription(error), omdbSearchResponse, nil, self.totalPages ?? 0)
+                        }
+                    } else {
+                        let omdbSearchResponse = Movie.init(searchResults: [serverResponseKeys.Response.description : "None" , serverResponseKeys.Error.description : self.APIService.getErrorCodeDescription(nil)], searchString: searchString)
+                        onCompletion(false, "Error Unknown", "Error Code Unknown", omdbSearchResponse, nil, self.totalPages ?? 0)
+                    }
+
                 }
             }
         })

@@ -39,6 +39,11 @@ extension OMDBTableViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         self.currentPage = 1 //when we start typing reset the current page to 1 as new results will be loaded
     }
+
+    func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
+        searchBar.returnKeyType = UIReturnKeyType.Done // because of the update search results automatically being fired keyboard must say done not search
+        return true
+    }
     
     func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         //Filter content for search
@@ -68,7 +73,8 @@ extension OMDBTableViewController {
         OMDBSearchService.sharedInstance.searchOMDBDatabaseByTitle(searchString, page: page, movieType: movieTypeScope) { (success, errorMessage, errorCodeString, movie, movies, totalPages) in
             MBProgressLoader.Hide()
             
-            self.totalPages = totalPages!
+            self.totalPages = totalPages! //force unwrap as we know will be zero or another INT
+            
             if success {
                 if let movies = movies {
                     self.searchResultMovies += movies
