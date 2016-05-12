@@ -21,7 +21,7 @@ enum responseTypes {
     }
 }
 
-enum movieTypes {
+enum movieTypesTitles {
     case movie
     case series
     case episode
@@ -42,6 +42,27 @@ enum movieTypes {
         case .all:
             let localizedString = NSLocalizedString("movietypes.all", comment: "")
             return localizedString;
+        }
+    }
+}
+
+enum movieTypes {
+    case movie
+    case series
+    case episode
+    case all
+    
+    var description : String {
+        switch self {
+        // Use Internationalization, as appropriate.
+        case .movie:
+            return "movie";
+        case .series:
+            return "series";
+        case .episode:
+            return "episode";
+        case .all:
+            return "all";
         }
     }
 }

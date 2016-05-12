@@ -17,6 +17,38 @@
             endingLineNumber = "122"
             landmarkName = "makeRequest(_:body:httpMethod:httpHeader:onCompletion:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OMDBMovies.Manager.makeRequest (Swift.String, body : Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;, httpMethod : OMDBMovies.httpMethods, httpHeader : Swift.Dictionary&lt;Swift.String, Swift.String&gt;, onCompletion : (Swift.Bool, Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "OMDBMovies"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bensmith/MovieSearchApp/OMDBMovies/Network/Manager/Manager.swift"
+                  timestampString = "484757605.317576"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "122"
+                  endingLineNumber = "122"
+                  offsetFromSymbolStart = "1404">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OMDBMovies.Manager.(makeRequest (Swift.String, body : Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;, httpMethod : OMDBMovies.httpMethods, httpHeader : Swift.Dictionary&lt;Swift.String, Swift.String&gt;, onCompletion : (Swift.Bool, Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #2)"
+                  moduleName = "OMDBMovies"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bensmith/MovieSearchApp/OMDBMovies/Network/Manager/Manager.swift"
+                  timestampString = "484757605.317818"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "123"
+                  endingLineNumber = "123"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -209,6 +241,70 @@
             endingLineNumber = "38"
             landmarkName = "searchMovieGeneric(_:searchString:onCompletion:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OMDBMovies/OMDBSearchController.swift"
+            timestampString = "484758128.103764"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "searchBar(_:selectedScopeButtonIndexDidChange:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OMDBMovies/OMDBSearchController.swift"
+            timestampString = "484758128.103764"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "doSearch(_:page:movieTypeScope:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OMDBMovies.OMDBTableViewController.doSearch (Swift.String, page : Swift.Int, movieTypeScope : Swift.String) -&gt; ()"
+                  moduleName = "OMDBMovies"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bensmith/MovieSearchApp/OMDBMovies/OMDBSearchController.swift"
+                  timestampString = "484757605.320889"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "192">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OMDBMovies.OMDBTableViewController.(doSearch (Swift.String, page : Swift.Int, movieTypeScope : Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "OMDBMovies"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bensmith/MovieSearchApp/OMDBMovies/OMDBSearchController.swift"
+                  timestampString = "484757605.321021"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "1636">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

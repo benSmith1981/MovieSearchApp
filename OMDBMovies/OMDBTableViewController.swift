@@ -38,7 +38,7 @@ class OMDBTableViewController: UITableViewController {
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         //setup the scopes to search between
-        searchController.searchBar.scopeButtonTitles = [movieTypes.all.description, movieTypes.episode.description, movieTypes.movie.description, movieTypes.series.description]
+        searchController.searchBar.scopeButtonTitles = [movieTypesTitles.all.description, movieTypesTitles.episode.description, movieTypesTitles.movie.description, movieTypesTitles.series.description]
         searchController.searchBar.delegate = self
     }
 

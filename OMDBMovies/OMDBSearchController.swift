@@ -18,6 +18,7 @@ extension OMDBTableViewController: UISearchResultsUpdating{
         let text = searchBar.text ?? ""
         dispatch_after(popTime, dispatch_get_main_queue()) {
             if text == searchBar.text {
+                let scope = self.determineScope(searchBar.scopeButtonTitles![self.selectedScope])
                 self.doSearch(text, page: self.currentPage, movieTypeScope: scope)
             }
         }
@@ -51,8 +52,28 @@ extension OMDBTableViewController: UISearchBarDelegate {
         self.currentPage = 1
         self.searchResultMovies = [] //reset our search results
         if searchController.active && searchController.searchBar.text?.characters.count >= 2 {
-            self.doSearch((searchController.searchBar.text)!, page: self.currentPage, movieTypeScope: searchBar.scopeButtonTitles![selectedScope])
+            let scope = determineScope(searchBar.scopeButtonTitles![selectedScope])
+            self.doSearch((searchController.searchBar.text)!, page: self.currentPage, movieTypeScope: scope)
         }
+    }
+    
+    /** Because of localizable strings the s
+     */
+    func determineScope(scopeTitle: String) -> String {
+        var scope: String
+        switch scopeTitle {
+        case movieTypesTitles.movie.description:
+            scope = movieTypes.movie.description
+        case movieTypesTitles.all.description:
+            scope = movieTypes.all.description
+        case movieTypesTitles.series.description:
+            scope = movieTypes.series.description
+        case movieTypesTitles.episode.description:
+            scope = movieTypes.episode.description
+        default:
+            scope = movieTypes.all.description
+        }
+        return scope
     }
 }
 
