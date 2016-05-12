@@ -36,8 +36,12 @@ class OMDBSearchServiceTests: XCTestCase {
         
         OMDBSearchService.sharedInstance.searchOMDBDatabaseByTitle(searchString, page: 1, movieType: movieTypes.all.description) { (success, errorMessage, errorCode, movieObject, moviesArray, totalResults) in
             if success {
-                XCTAssert(moviesArray!.count > 0) //we expect a lot of results
-                expectation.fulfill()
+                if let moviesArray = moviesArray {
+                    XCTAssert(moviesArray.count > 0) //we expect a lot of results
+                    expectation.fulfill()
+                } else{
+                    XCTAssert(moviesArray == nil)
+                }
             } else {
                 XCTFail(errorMessage!)
             }

@@ -30,10 +30,18 @@ enum movieTypes {
     var description : String {
         switch self {
         // Use Internationalization, as appropriate.
-        case .movie: return "movie";
-        case .series: return "series";
-        case .episode: return "episode";
-        case .all: return "ALL";
+        case .movie:
+            let localizedString = NSLocalizedString("movietypes.movie", comment: "")
+            return localizedString;
+        case .series:
+            let localizedString = NSLocalizedString("movietypes.series", comment: "")
+            return localizedString;
+        case .episode:
+            let localizedString = NSLocalizedString("movietypes.episode", comment: "")
+            return localizedString;
+        case .all:
+            let localizedString = NSLocalizedString("movietypes.all", comment: "")
+            return localizedString;
         }
     }
 }
@@ -86,10 +94,20 @@ enum errorDomains: String {
 }
 
 enum responseMessages: String{
-    case networkConnectionProblem = "Network connection problem"
-    case serverProblem = "Server problem"
-    case ombdError = "Search problem"
-    case success = "Success"
+    case networkConnectionProblem
+    case serverProblem
+    case ombdError
+    case success
+    
+    var description : String {
+        switch self {
+        // Use Internationalization, as appropriate.
+        case .networkConnectionProblem: return NSLocalizedString("responseMessages.networkConnectionProblem", comment: "");
+        case .serverProblem: return NSLocalizedString("responseMessages.serverProblem", comment: "");
+        case .ombdError: return NSLocalizedString("responseMessages.ombdError", comment: "");
+        case .success: return NSLocalizedString("responseMessages.success", comment: "");
+        }
+    }
 }
 
 enum serverResponseKeys {

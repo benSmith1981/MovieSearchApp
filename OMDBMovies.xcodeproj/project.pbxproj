@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9054CC801CE1660F00F575E2 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9054CC7F1CE1660F00F575E2 /* UIImageViewExtensions.swift */; };
 		9054CC821CE1F16400F575E2 /* RequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9054CC811CE1F16400F575E2 /* RequestResult.swift */; };
+		909AFF6A1CE493A200459C71 /* localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 909AFF6C1CE493A200459C71 /* localizable.strings */; };
 		BEA334181CDDE88A00F5755B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334171CDDE88A00F5755B /* AppDelegate.swift */; };
 		BEA3341A1CDDE88A00F5755B /* OMDBTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334191CDDE88A00F5755B /* OMDBTableViewController.swift */; };
 		BEA3341D1CDDE88A00F5755B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEA3341B1CDDE88A00F5755B /* Main.storyboard */; };
@@ -24,7 +24,6 @@
 		BEA334531CDE09F900F5755B /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334521CDE09F900F5755B /* Movie.swift */; };
 		BEA334551CDE69C000F5755B /* OMDBTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334541CDE69C000F5755B /* OMDBTableCell.swift */; };
 		BEA334571CDE73E100F5755B /* OMDBDetailMovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334561CDE73E100F5755B /* OMDBDetailMovieView.swift */; };
-		BEA3345A1CDF9AE000F5755B /* UIViewcontrollerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA334591CDF9AE000F5755B /* UIViewcontrollerExtensions.swift */; };
 		BEA3345D1CDFAD1E00F5755B /* MBProgressLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA3345C1CDFAD1E00F5755B /* MBProgressLoader.swift */; };
 		BED576AC1CE3F60E00E89C25 /* OMDBSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED576AB1CE3F60E00E89C25 /* OMDBSearchController.swift */; };
 		BED576AE1CE4777000E89C25 /* OMDBSearchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED576AD1CE4777000E89C25 /* OMDBSearchServiceTests.swift */; };
@@ -64,8 +63,11 @@
 /* Begin PBXFileReference section */
 		0E1D6BCC2CB01223C0BFE037 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		1850F1E5C73FD93A08F95924 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9054CC7F1CE1660F00F575E2 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		9054CC811CE1F16400F575E2 /* RequestResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestResult.swift; sourceTree = "<group>"; };
+		909AFF6B1CE493A200459C71 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/localizable.strings; sourceTree = "<group>"; };
+		909AFF6E1CE4943200459C71 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
+		909AFF6F1CE4943200459C71 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		909AFF701CE4943200459C71 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/localizable.strings; sourceTree = "<group>"; };
 		BEA334141CDDE88A00F5755B /* OMDBMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OMDBMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEA334171CDDE88A00F5755B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEA334191CDDE88A00F5755B /* OMDBTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMDBTableViewController.swift; sourceTree = "<group>"; };
@@ -87,7 +89,6 @@
 		BEA334521CDE09F900F5755B /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		BEA334541CDE69C000F5755B /* OMDBTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDBTableCell.swift; sourceTree = "<group>"; };
 		BEA334561CDE73E100F5755B /* OMDBDetailMovieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDBDetailMovieView.swift; sourceTree = "<group>"; };
-		BEA334591CDF9AE000F5755B /* UIViewcontrollerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewcontrollerExtensions.swift; sourceTree = "<group>"; };
 		BEA3345B1CDFACF500F5755B /* OMDBMovies-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OMDBMovies-Bridging-Header.h"; sourceTree = "<group>"; };
 		BEA3345C1CDFAD1E00F5755B /* MBProgressLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBProgressLoader.swift; sourceTree = "<group>"; };
 		BED576AB1CE3F60E00E89C25 /* OMDBSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDBSearchController.swift; sourceTree = "<group>"; };
@@ -156,7 +157,6 @@
 			children = (
 				BEA3345C1CDFAD1E00F5755B /* MBProgressLoader.swift */,
 				BEA3345B1CDFACF500F5755B /* OMDBMovies-Bridging-Header.h */,
-				BEA334581CDF9ACE00F5755B /* extensions */,
 				BEA3344E1CDDF54300F5755B /* Enums.swift */,
 				BEA3344C1CDDF01600F5755B /* OMDBConstants.swift */,
 				BEA334451CDDEFE600F5755B /* Network */,
@@ -169,6 +169,7 @@
 				BEA3341E1CDDE88A00F5755B /* Assets.xcassets */,
 				BEA334201CDDE88A00F5755B /* LaunchScreen.storyboard */,
 				BEA334231CDDE88A00F5755B /* Info.plist */,
+				909AFF6C1CE493A200459C71 /* localizable.strings */,
 			);
 			path = OMDBMovies;
 			sourceTree = "<group>";
@@ -218,15 +219,6 @@
 				9054CC811CE1F16400F575E2 /* RequestResult.swift */,
 			);
 			path = Manager;
-			sourceTree = "<group>";
-		};
-		BEA334581CDF9ACE00F5755B /* extensions */ = {
-			isa = PBXGroup;
-			children = (
-				BEA334591CDF9AE000F5755B /* UIViewcontrollerExtensions.swift */,
-				9054CC7F1CE1660F00F575E2 /* UIImageViewExtensions.swift */,
-			);
-			name = extensions;
 			sourceTree = "<group>";
 		};
 		D7DB36E169CA005053AF2DBF /* Pods */ = {
@@ -328,6 +320,7 @@
 			knownRegions = (
 				en,
 				Base,
+				nl,
 			);
 			mainGroup = BEA3340B1CDDE88A00F5755B;
 			productRefGroup = BEA334151CDDE88A00F5755B /* Products */;
@@ -347,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEA334221CDDE88A00F5755B /* LaunchScreen.storyboard in Resources */,
+				909AFF6A1CE493A200459C71 /* localizable.strings in Resources */,
 				BEA3341F1CDDE88A00F5755B /* Assets.xcassets in Resources */,
 				BEA3341D1CDDE88A00F5755B /* Main.storyboard in Resources */,
 			);
@@ -422,7 +416,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9054CC821CE1F16400F575E2 /* RequestResult.swift in Sources */,
-				9054CC801CE1660F00F575E2 /* UIImageViewExtensions.swift in Sources */,
 				BEA334571CDE73E100F5755B /* OMDBDetailMovieView.swift in Sources */,
 				BEA3341A1CDDE88A00F5755B /* OMDBTableViewController.swift in Sources */,
 				BEA3345D1CDFAD1E00F5755B /* MBProgressLoader.swift in Sources */,
@@ -434,7 +427,6 @@
 				BEA3344B1CDDEFE600F5755B /* Manager.swift in Sources */,
 				BEA3344F1CDDF54300F5755B /* Enums.swift in Sources */,
 				BEA334551CDE69C000F5755B /* OMDBTableCell.swift in Sources */,
-				BEA3345A1CDF9AE000F5755B /* UIViewcontrollerExtensions.swift in Sources */,
 				BEA3344D1CDDF01600F5755B /* OMDBConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,10 +477,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		909AFF6C1CE493A200459C71 /* localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				909AFF6B1CE493A200459C71 /* en */,
+				909AFF701CE4943200459C71 /* nl */,
+			);
+			name = localizable.strings;
+			sourceTree = "<group>";
+		};
 		BEA3341B1CDDE88A00F5755B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				BEA3341C1CDDE88A00F5755B /* Base */,
+				909AFF6E1CE4943200459C71 /* nl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -497,6 +499,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				BEA334211CDDE88A00F5755B /* Base */,
+				909AFF6F1CE4943200459C71 /* nl */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

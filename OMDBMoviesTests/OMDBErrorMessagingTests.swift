@@ -45,7 +45,7 @@ class OMDBMoviesTests: XCTestCase {
     }
     
     func testSetServerCodeMessageReturnsRightErrorsToUIWithNSErrorType() {
-        let errorMessage = responseMessages.networkConnectionProblem.rawValue
+        let errorMessage = responseMessages.networkConnectionProblem.description
         let errorCode = responseCodes.connectionFail400.rawValue
         let domain = errorDomains.networkErrorDomain.rawValue
         

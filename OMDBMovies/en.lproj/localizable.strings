@@ -1,0 +1,19 @@
+/* 
+  localizable.strings
+  OMDBMovies
+
+  Created by Ben Smith on 12/05/16.
+  Copyright © 2016 Ben Smith. All rights reserved.
+*/
+
+"responseMessages.networkConnectionProblem" = "Network connection problem";
+"responseMessages.serverProblem" = "Server problem";
+"responseMessages.ombdError" = "Search problem";
+"responseMessages.success" = "Success";
+
+"movietypes.movie" = "Movie";
+"movietypes.series" = "Series";
+"movietypes.episode" = "Episode";
+"movietypes.all" = "All";
+
+

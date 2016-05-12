@@ -55,14 +55,14 @@ class APIServiceManager {
         } else if let error = error {
             //for any error between 500 to 599 return server problem, else return network error
             if case responseCodes.serverProblem500.rawValue ... responseCodes.serverProblem599.rawValue = error.code {
-                return requestResult.init(success: false, errorMessage: responseMessages.serverProblem.rawValue, errorCode: error.code, domain: .networkErrorDomain)
+                return requestResult.init(success: false, errorMessage: responseMessages.serverProblem.description, errorCode: error.code, domain: .networkErrorDomain)
             } else {
                 //if there is possibly any other just return the systems error
-                return requestResult.init(success: false, errorMessage: responseMessages.networkConnectionProblem.rawValue, errorCode: error.code, domain: .networkErrorDomain)
+                return requestResult.init(success: false, errorMessage: responseMessages.networkConnectionProblem.description, errorCode: error.code, domain: .networkErrorDomain)
             }
         }
         //success so return that with a success domain
-        return requestResult.init(success: true, errorMessage: responseMessages.success.rawValue, errorCode: responseCodes.ok200.rawValue, domain: .successDomain)
+        return requestResult.init(success: true, errorMessage: responseMessages.success.description, errorCode: responseCodes.ok200.rawValue, domain: .successDomain)
     }
     
     /** Converts the error string from the code
@@ -72,9 +72,9 @@ class APIServiceManager {
     func getErrorCodeDescription(error: NSError?) -> String {
         if let error = error {
             if error.code == responseCodes.omdbErrorCode.rawValue {
-                return responseMessages.ombdError.rawValue
+                return responseMessages.ombdError.description
             } else {
-                return responseMessages.networkConnectionProblem.rawValue
+                return responseMessages.networkConnectionProblem.description
             }
         }
         return "No Error Code"
