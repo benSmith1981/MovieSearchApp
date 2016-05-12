@@ -105,7 +105,8 @@ extension OMDBTableViewController {
             if indexPath.row == self.currentPage * OMDBConstants.pagesPerRequest - 1 && self.currentPage < self.totalPages {
                 self.currentPage += 1
                 if let text = (searchController.searchBar.text) { //check for nil search text then search for more movies that are conatined in the response but not yet paged
-                    self.doSearch(text, page: self.currentPage, movieTypeScope: searchController.searchBar.scopeButtonTitles![self.selectedScope])
+                    let scope = determineScope(searchController.searchBar.scopeButtonTitles![selectedScope])
+                    self.doSearch(text, page: self.currentPage, movieTypeScope: scope)
                 }
             }
         }
