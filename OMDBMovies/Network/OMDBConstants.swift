@@ -25,6 +25,7 @@ struct OMDBConstants {
 
     //parameters in the search URL
     struct parameters {
+        static let imdbID = "i"
         static let title = "t"
         static let searchTitle = "s"
         static let year = "y"

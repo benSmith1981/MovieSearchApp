@@ -30,12 +30,10 @@ struct Movie {
     var FilmType: String?
     var Response: String?
     var Error: String?
-    var SearchString: String?
     var tomatoeRating: String?
 
-    init(searchResults: BodyDataDictionary, searchString:String){
+    init(searchResults: BodyDataDictionary){
         
-        self.SearchString = searchString
 
         if let Error = searchResults[serverResponseKeys.Error.description] as? String,
             let Response = searchResults[serverResponseKeys.Response.description] as? String{

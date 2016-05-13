@@ -122,9 +122,10 @@ extension OMDBTableViewController {
         self.currentMovieSelected = self.searchResultMovies[indexPath.row]
 
         //if there is a movie selected it will have a title and a year
-        if let title = currentMovieSelected?.Title {
+        if let imdbID = currentMovieSelected?.imdbID{
             MBProgressLoader.Show()
-            OMDBSearchService.sharedInstance.searchMovieDetailsDatabase(title, plot: plotTypes.FULL, response: responseTypes.JSON, onCompletion: { (success, errorMessage, errorCode, movie, nil, searchText) in
+            //search for detail by specific ID, because some films have same name!
+            OMDBSearchService.sharedInstance.searchMovieDetailsDatabase(imdbID, plot: plotTypes.FULL, response: responseTypes.JSON, onCompletion: { (success, errorMessage, errorCode, movie, nil, searchText) in
                 if success {
                     if let movie = movie {
                         // your new view controller should have property that will store passed value
