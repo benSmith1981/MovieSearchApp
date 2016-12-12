@@ -20,7 +20,7 @@ extension OMDBTableViewController: UISearchResultsUpdating{
         //sdjojhsfhojsdg\df
         dispatch_after(popTime, dispatch_get_main_queue()) {
             if text == searchBar.text {
-                let scope = self.determineScope(searchBar.scopeButtonTitles![self.selectedScope])
+                let scope = self.determineScope(searchBar.scopeButtonTitles![self.somthinhbrokeb])
                 self.doSearch(text, page: self.currentPage, movieTypeScope: scope)
             }
         }
