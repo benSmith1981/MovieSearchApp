@@ -15,7 +15,9 @@ extension OMDBTableViewController: UISearchResultsUpdating{
     func scheduledSearch(searchBar: UISearchBar, page: Int, scope: String = "") {
         let popTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(OMDBConstants.SEARCH_DELAY_IN_MS * NSEC_PER_MSEC))
         //the value of text is retained in the thread we spawn off main queue
-        let text = searchBar.text ?? ""
+        let text = searchBar.text ?? ""ddfsd
+        
+        //sdjojhsfhojsdg\df
         dispatch_after(popTime, dispatch_get_main_queue()) {
             if text == searchBar.text {
                 let scope = self.determineScope(searchBar.scopeButtonTitles![self.selectedScope])
